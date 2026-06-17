@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Adult Skating Competition Requirements</title>
+<meta name="description" content="A less text-dense adult skating competition requirements browser, starting with Skate Canada and ISU rule sets.">
+<meta name="theme-color" content="#f0f8ff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ice-50:#f0f8ff; --ice-100:#e0f0ff; --ice-200:#baddff;
+  --accent:#2563eb; --accent-h:#1d4ed8; --accent-l:#eff4ff;
+  --ink:#0e1118; --text:#0e1118; --text2:#454f68; --text3:#5e6779;
+  --card:#ffffff; --bg:#f0f8ff; --border:#d8e0ea; --border2:#e7edf4;
+  --free:#d9d2ec; --free-ink:#3c2f63; --free-edge:#b3a6d6;
+  --dance:#fbe7a8; --dance-ink:#6b4e0e; --dance-edge:#e8c46b;
+  --pairs:#cfe3c2; --pairs-ink:#2f5318; --pairs-edge:#a9cd90;
+  --artistic:#c4d6ee; --artistic-ink:#1f3a63; --artistic-edge:#8fb2da;
+  --showcase:#f8cbad; --showcase-ink:#7a3c10; --showcase-edge:#efb289;
+  --synchro:#bde7dd; --synchro-ink:#164d43; --synchro-edge:#87cfc0;
+  --r:4px;
+  --shadow:0 1px 2px rgba(14,17,24,0.05);
+  --shadow-md:0 8px 28px rgba(14,17,24,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:300;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--r);}
+.top{position:sticky;top:0;z-index:30;background:rgba(240,248,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top);}
+.top-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;max-width:1120px;margin:0 auto;}
+.logo{font-size:1.2rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;}
+.logo span{color:var(--accent);}
+.program-switch{display:flex;gap:4px;align-items:center;background:var(--card);border:1.5px solid var(--border);border-radius:999px;padding:4px;box-shadow:var(--shadow);}
+.program-btn{font-family:inherit;font-size:0.78rem;font-weight:700;color:var(--text2);background:transparent;border:0;border-radius:999px;padding:7px 12px;min-height:34px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.program-btn:hover{color:var(--accent);background:var(--accent-l);}
+.program-btn.active{color:var(--section-ink,var(--accent));background:var(--section-bg,var(--accent-l));box-shadow:inset 0 0 0 1px var(--section-edge,rgba(37,99,235,0.2));}
+.program-btn:disabled{opacity:.45;cursor:not-allowed;}
+.program-btn:disabled:hover{color:var(--text2);background:transparent;}
+.overview{padding:28px 0 22px;border-bottom:1px solid var(--border);}
+.overview h1{font-size:2rem;font-weight:700;line-height:1.14;letter-spacing:-0.02em;color:var(--ink);margin-bottom:14px;}
+.season-label{display:inline-flex;align-items:center;width:max-content;margin:-2px 0 14px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--text2);font-size:0.78rem;font-weight:700;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;}
+.overview-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:13px 15px;}
+.overview-card h2{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:7px;}
+.overview-card p{font-size:0.88rem;color:var(--text2);line-height:1.58;}
+.age-guide{margin-top:12px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:17px;}
+.age-guide h2{font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.age-guide-intro{font-size:0.9rem;color:var(--text2);line-height:1.55;margin-bottom:12px;max-width:880px;}
+.age-guide-layout{display:grid;grid-template-columns:1fr;gap:16px;}
+.age-guide-column{display:grid;align-content:start;gap:8px;}
+.age-guide-label{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);}
+.age-entry{padding:2px 0 10px;border:0;background:transparent;box-shadow:none;border-radius:0;max-width:760px;}
+.age-entry + .age-entry{margin-top:2px;padding-top:10px;border-top:1px solid var(--border2);}
+.age-class{border:1px solid var(--border2);border-radius:var(--r);background:#fff;padding:9px 10px;}
+.age-entry strong,.age-class strong{display:block;color:var(--ink);font-weight:700;font-size:0.86rem;line-height:1.35;}
+.age-entry span,.age-class span{display:block;color:var(--text2);font-size:0.82rem;line-height:1.45;margin-top:3px;}
+.age-entry span{font-size:0.86rem;max-width:720px;}
+.age-class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px;max-width:820px;}
+.age-guide-note{font-size:0.8rem;color:var(--text3);line-height:1.5;margin-top:2px;max-width:880px;}
+.tabs{position:sticky;top:var(--top-height,57px);z-index:25;background:rgba(240,248,255,0.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tabs-inner{display:flex;gap:6px;max-width:1120px;margin:0 auto;padding:9px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tabs-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex:0 0 auto;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--text2);background:var(--card);border:1.5px solid var(--border);border-radius:999px;padding:8px 14px;min-height:38px;display:flex;align-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.tab-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-l);}
+.tab-btn.active{background:var(--section-bg);color:var(--section-ink);border-color:var(--section-edge);}
+.subtabs{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 0 14px;}
+.subtabs::-webkit-scrollbar{display:none;}
+.subtab-btn{flex:0 0 auto;font-family:inherit;font-size:0.8rem;font-weight:700;color:var(--text2);background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:8px 12px;min-height:38px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.subtab-btn:hover{border-color:var(--section-edge);color:var(--section-ink);background:color-mix(in srgb,var(--section-bg) 35%,white);}
+.subtab-btn.active{border-color:var(--section-edge);color:var(--section-ink);background:var(--section-bg);}
+.section{padding:22px 0 4px;}
+.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:13px;}
+.section-title{display:grid;gap:4px;}
+.section-title h2{font-size:1.35rem;line-height:1.2;letter-spacing:-0.01em;color:var(--ink);}
+.section-title p{font-size:0.88rem;color:var(--text3);line-height:1.55;max-width:720px;}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px;}
+.guide-card,.category-card,.note-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);}
+.guide-card{padding:14px 16px;}
+.guide-card h3,.note-card h3{font-size:0.76rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);margin-bottom:7px;}
+.guide-card p,.note-card p{font-size:0.9rem;color:var(--text2);line-height:1.6;}
+.note-list{list-style:disc;padding-left:1.15rem;display:grid;gap:6px;}
+.note-list li{font-size:0.9rem;color:var(--text2);line-height:1.58;}
+.age-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;list-style:none;margin-top:10px;}
+.age-grid li{font-size:0.84rem;color:var(--text2);border:1px solid var(--border2);border-radius:var(--r);padding:8px 9px;background:#fff;}
+.age-grid strong{display:block;color:var(--ink);font-weight:700;}
+.note-card{padding:14px 16px;margin-bottom:14px;border-color:color-mix(in srgb,var(--section-bg) 80%,var(--border));background:color-mix(in srgb,var(--section-bg) 26%,white);}
+.category-list{display:grid;gap:12px;}
+.planner-launch{display:flex;justify-content:flex-start;margin:0 0 14px;}
+.planner-button{font-family:inherit;font-size:0.86rem;font-weight:700;color:#fff;background:var(--accent);border:1px solid var(--accent-h);border-radius:var(--r);padding:10px 14px;min-height:40px;cursor:pointer;box-shadow:var(--shadow);}
+.planner-button:hover{background:var(--accent-h);}
+.category-card{overflow:hidden;}
+.category-head{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border2);}
+.category-head h3{font-size:1.04rem;line-height:1.25;letter-spacing:-0.01em;color:var(--ink);}
+.category-sub{font-size:0.82rem;color:var(--text3);margin-top:4px;line-height:1.45;}
+.category-summary{font-size:0.86rem;color:var(--text2);margin-top:8px;line-height:1.45;}
+.category-summary strong{color:var(--ink);font-weight:700;}
+.time-pill{font-family:'Space Grotesk','DM Sans',sans-serif;font-size:0.78rem;font-weight:700;color:var(--section-ink);background:var(--section-bg);border:1px solid var(--section-edge);border-radius:var(--r);padding:5px 8px;white-space:nowrap;}
+.category-body{padding:14px 16px 16px;display:grid;gap:11px;}
+.rule-group{display:grid;gap:9px;border:1.5px solid color-mix(in srgb,var(--section-bg) 72%,var(--border));border-radius:var(--r);background:color-mix(in srgb,var(--section-bg) 18%,white);padding:13px 15px;}
+.rule-label{font-size:0.76rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);}
+.rule-list{list-style:disc;padding-left:1.15rem;display:grid;gap:5px;}
+.rule-list li{font-size:0.92rem;color:var(--text2);line-height:1.58;padding-left:2px;}
+.rule-list li::marker{color:var(--text3);}
+.rule-list li strong{color:var(--ink);font-weight:700;}
+.source-note{margin-top:34px;background:var(--accent-l);border:1px solid rgba(37,99,235,0.15);border-radius:var(--r);padding:14px 18px;font-size:0.85rem;color:var(--text2);line-height:1.6;}
+.source-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.source-link{font-size:0.78rem;font-weight:700;color:var(--accent);text-decoration:none;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:7px 10px;white-space:nowrap;}
+.source-link:hover{background:var(--accent-l);}
+footer.wrap{padding:18px 20px 96px;color:var(--text3);font-size:0.8rem;line-height:1.6;}
+footer p{max-width:760px;}
+.modal-shell{position:fixed;inset:0;z-index:80;display:none;}
+.modal-shell.open{display:block;}
+.modal-backdrop{position:absolute;inset:0;background:rgba(14,17,24,0.48);}
+.planner-modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(980px,calc(100vw - 32px));max-height:min(820px,calc(100vh - 32px));overflow:hidden;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;box-shadow:var(--shadow-md);display:grid;grid-template-rows:auto 1fr;}
+.planner-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:16px 18px;background:var(--card);border-bottom:1px solid var(--border);}
+.planner-head h2{font-size:1.2rem;line-height:1.2;letter-spacing:-0.01em;color:var(--ink);}
+.planner-head p{font-size:0.84rem;color:var(--text3);line-height:1.45;margin-top:4px;}
+.planner-close{font-family:inherit;font-size:1.4rem;line-height:1;color:var(--text2);background:var(--card);border:1px solid var(--border);border-radius:var(--r);width:36px;height:36px;cursor:pointer;}
+.planner-close:hover{color:var(--accent);background:var(--accent-l);}
+.planner-body{overflow:auto;padding:16px 18px 18px;display:grid;gap:14px;}
+.planner-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start;}
+.planner-panel{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:14px;}
+.planner-panel h3{font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.builder-panel{position:static;margin-top:14px;background:transparent;border:0;box-shadow:none;padding:0;}
+.planner-panel-head{display:grid;gap:10px;margin-bottom:10px;}
+.planner-panel-head h3{margin-bottom:0;}
+.builder-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:12px;}
+.builder-tab{font:inherit;font-size:0.82rem;font-weight:700;color:var(--text2);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;cursor:pointer;}
+.builder-tab.active{color:var(--accent);background:var(--accent-l);border-color:#bcd0ff;}
+.builder-section{display:grid;gap:12px;}
+.builder-group{display:grid;gap:7px;}
+.builder-label{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);}
+.builder-choice-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.builder-choice{font:inherit;font-size:0.9rem;color:var(--text2);background:#fff;border:1px solid var(--border);border-radius:var(--r);min-width:44px;padding:8px 10px;cursor:pointer;}
+.builder-choice.active{color:var(--accent);background:#eef5ff;border-color:#a9c4ff;box-shadow:inset 0 0 0 1px #a9c4ff;}
+.builder-jump-card{border:1px solid var(--border2);border-radius:var(--r);background:#fff;padding:10px;display:grid;gap:9px;}
+.builder-jump-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--text3);font-size:0.76rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
+.builder-add-row{display:flex;flex-wrap:wrap;gap:8px;}
+.builder-action{font:inherit;font-size:0.84rem;font-weight:700;border:1px solid var(--border);border-radius:var(--r);background:#fff;color:var(--text2);padding:8px 10px;cursor:pointer;}
+.builder-action.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+.planner-panel-head .builder-action.primary{font-weight:400;}
+.builder-action:hover{border-color:#a9c4ff;color:var(--accent);}
+.builder-action.primary:hover{background:#1d4ed8;color:#fff;}
+.builder-action:disabled{opacity:0.42;cursor:not-allowed;}
+.builder-preview{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--border2);border-radius:var(--r);background:#f8fbff;padding:9px 10px;margin-top:10px;}
+.builder-preview-code{font-size:0.9rem;font-weight:700;color:var(--ink);}
+.builder-confirm-icon{width:32px;height:32px;min-width:32px;padding:0;border-radius:999px;font-size:1.05rem;line-height:1;display:inline-grid;place-items:center;}
+.sheet-empty{color:var(--text3);font-size:0.86rem;padding:14px 6px;}
+.sheet-remove{font:inherit;border:0;background:transparent;color:var(--text3);cursor:pointer;font-size:1rem;line-height:1;padding:4px;}
+.sheet-remove:hover{color:#dc2626;}
+.planner-field{display:grid;gap:6px;margin-bottom:10px;}
+.planner-field label,.element-row label{font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3);}
+.planner-select, .element-row select{width:100%;font:inherit;font-size:0.86rem;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 42px 8px 9px;min-height:38px;text-overflow:ellipsis;}
+.element-list{display:grid;gap:10px;}
+.element-row{border:1px solid var(--border2);border-radius:var(--r);padding:10px;background:#fff;display:grid;gap:9px;}
+.element-row-title{font-size:0.86rem;font-weight:700;color:var(--ink);}
+.element-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.element-controls.two{grid-template-columns:repeat(2,minmax(0,1fr));}
+.sheet-table{width:100%;border-collapse:collapse;font-size:0.86rem;table-layout:fixed;}
+.sheet-table th,.sheet-table td{text-align:left;border-bottom:1px solid var(--border2);padding:8px 6px;vertical-align:top;}
+.sheet-table th{font-size:0.7rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text3);}
+.sheet-table td:last-child,.sheet-table th:last-child{text-align:right;white-space:nowrap;}
+.sheet-table th:nth-child(1),.sheet-table td:nth-child(1){width:38px;}
+.sheet-table th:nth-child(2),.sheet-table td:nth-child(2){width:auto;}
+.sheet-table th:nth-child(3),.sheet-table td:nth-child(3){width:68px;text-align:center;}
+.sheet-table th:nth-child(4),.sheet-table td:nth-child(4){width:76px;text-align:right;}
+.sheet-table .sheet-action-col,.sheet-table td:nth-child(5){width:30px;text-align:right;}
+.sheet-select{width:100%;font:inherit;font-size:0.86rem;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:7px 8px;min-height:36px;}
+.sheet-entry{position:relative;}
+.sheet-input{width:100%;font:inherit;font-size:0.92rem;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 9px;min-height:38px;}
+.sheet-input:focus{outline:2px solid rgba(37,99,235,0.18);border-color:#93c5fd;}
+.sheet-suggestions{display:none;position:absolute;z-index:50;left:0;right:0;top:calc(100% + 5px);max-height:240px;overflow:auto;background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:6px;}
+.sheet-entry.open .sheet-suggestions{display:block;}
+.sheet-suggestion-group{display:grid;gap:3px;padding:3px 0;}
+.sheet-suggestion-group + .sheet-suggestion-group{border-top:1px solid var(--border2);}
+.sheet-suggestion-heading{padding:6px 7px 2px;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);}
+.sheet-suggestion-option{width:100%;border:0;background:transparent;border-radius:6px;padding:7px 8px;text-align:left;font:inherit;font-size:0.86rem;color:var(--text);cursor:pointer;}
+.sheet-suggestion-option:hover,.sheet-suggestion-option.selected{background:#eef5ff;color:var(--accent);}
+.info-alert{font-family:inherit;font-size:0.8rem;font-weight:700;color:#fff;background:#dc2626;border:0;border-radius:999px;width:22px;height:22px;display:inline-grid;place-items:center;cursor:pointer;}
+.info-alert:hover{background:#991b1b;}
+.planner-warning:target,.planner-warning.flash{box-shadow:0 0 0 3px rgba(220,38,38,0.18);}
+.planner-total{display:flex;justify-content:space-between;gap:12px;margin-top:10px;padding-top:10px;border-top:1.5px solid var(--border);font-weight:700;color:var(--ink);}
+.planner-total-subtitle{font-size:0.78rem;color:var(--text3);line-height:1.45;margin-top:6px;}
+.planner-warnings{display:grid;gap:8px;margin-top:12px;}
+.planner-warning{border:1px solid var(--border);border-left-width:4px;border-radius:var(--r);background:#fff;padding:9px 10px;font-size:0.84rem;color:var(--text2);line-height:1.45;}
+.planner-warning.error{border-left-color:#dc2626;}
+.planner-warning.caution{border-left-color:#d97706;}
+.planner-warning.info{border-left-color:var(--accent);}
+.planner-empty{font-size:0.88rem;color:var(--text3);line-height:1.5;}
+.planner-note{font-size:0.78rem;color:var(--text3);line-height:1.5;margin-top:8px;}
+@media (max-width:820px){
+  .overview-grid{grid-template-columns:1fr;}
+  .age-guide-layout{grid-template-columns:1fr;}
+  .age-class-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .guide-grid{grid-template-columns:1fr;}
+  .planner-grid{grid-template-columns:1fr;}
+  .element-controls{grid-template-columns:1fr;}
+  .element-controls.two{grid-template-columns:1fr;}
+  .age-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .category-head{grid-template-columns:1fr;}
+  .time-pill{justify-self:start;}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px;}
+  .top-inner{padding:12px 16px;align-items:flex-start;flex-wrap:wrap;}
+  .program-switch{width:100%;justify-content:space-between;}
+  .program-btn{font-size:0.74rem;flex:1;padding:7px 8px;}
+  .source-link{font-size:0.72rem;padding:7px 8px;}
+  .overview{padding:22px 0 18px;}
+  .overview h1{font-size:1.55rem;}
+  .tabs-inner{padding:8px 16px;}
+  .tab-btn{font-size:0.78rem;padding:7px 11px;}
+  .section{padding-top:18px;}
+  .section-head{display:grid;}
+  .age-class-grid{grid-template-columns:1fr;}
+  .age-grid{grid-template-columns:1fr;}
+  .source-note{margin-top:28px;}
+  footer.wrap{padding-bottom:120px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a href="#" class="logo">Adult <span>Skating</span></a>
+    <div class="program-switch" id="program-switch" aria-label="Rule book"></div>
+  </div>
+</header>
+
+<section class="overview">
+  <div class="wrap" id="overview-content"></div>
+</section>
+
+<nav class="tabs" aria-label="Competition discipline">
+  <div class="tabs-inner" id="tabs"></div>
+</nav>
+
+<main class="wrap" id="app"></main>
+
+<div class="modal-shell" id="planner-modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-planner></div>
+  <section class="planner-modal" role="dialog" aria-modal="true" aria-labelledby="planner-title">
+    <div class="planner-head">
+      <div>
+        <h2 id="planner-title">Plan your program</h2>
+        <p id="planner-subtitle">Build a free skate layout and check it against the selected adult category.</p>
+      </div>
+      <button type="button" class="planner-close" data-close-planner aria-label="Close planner">×</button>
+    </div>
+    <div class="planner-body" id="planner-body"></div>
+  </section>
+</div>
+
+<footer class="wrap">
+  <div class="source-note" id="source-note"></div>
+  <p id="footer-disclaimer"></p>
+</footer>
+
+<script>
+const canadaSections = [
+  {
+    id:'general',
+    label:'General Information',
+    badge:'Overview',
+    color:'accent',
+    intro:'High-level rules and age classes from the adult requirements page.',
+    type:'general'
+  },
+  {
+    id:'free-skating',
+    label:'Free Skating',
+    badge:'Section 2',
+    color:'free',
+    intro:'Waltz Jump is permitted as a jump element in Adult Intro Open and Adult Bronze Free Skating only.',
+    categories:[
+      {
+        name:'Adult Intro Open Free Skating',
+        time:'Max 1:40',
+        sub:'Free skating program to music',
+        groups:[
+          ['Program', [['limit','Seven elements. Program time may be shorter.']]],
+          ['Jump Elements', [
+            ['limit','Maximum four jump elements.'],
+            ['','Must include a Waltz Jump.'],
+            ['limit','Maximum one jump combination. Two jumps permitted in the jump combination.'],
+            ['no','No sequences permitted.'],
+            ['no','No jumps higher than single loop.'],
+            ['','No jump may be included more than twice.']
+          ]],
+          ['Spin Elements', [
+            ['limit','Maximum two spins; maximum Level 4.'],
+            ['','Two spins in one position; spins must have different codes.']
+          ]],
+          ['Spiral Sequence', [
+            ['','Forward spiral sequence: two forward spirals, one on each foot, unsupported, on either inside or outside edge.']
+          ]]
+        ]
+      },
+      {
+        name:'Adult Bronze Free Skating',
+        time:'1:40 +/- 10s',
+        sub:'Free skating program to music',
+        groups:[
+          ['Program', [['limit','Seven elements.']]],
+          ['Jump Elements', [
+            ['limit','Maximum four jump elements.'],
+            ['','All jumps must be single jumps.'],
+            ['yes','Waltz jump is permitted.'],
+            ['no','Single Axel, double jumps, and triple jumps are not permitted.'],
+            ['limit','Maximum two jump combinations, with a maximum of two jumps in each combination.'],
+            ['','No jump may be included more than twice.']
+          ]],
+          ['Spins', [
+            ['limit','Maximum two spins; maximum Level 4.'],
+            ['','Two spins in one position; change of foot permitted, no flying entry.'],
+            ['','Spins must have different codes.']
+          ]],
+          ['Choreographic Sequence', [
+            ['limit','Maximum one choreographic sequence.']
+          ]]
+        ]
+      },
+      {
+        name:'Adult Silver Free Skating',
+        time:'2:00 +/- 10s',
+        sub:'Free skating program to music',
+        groups:[
+          ['Program', [['limit','Seven elements.']]],
+          ['Jump Elements', [
+            ['limit','Maximum four jump elements.'],
+            ['yes','May include a single Axel Jump.'],
+            ['no','Waltz jump, double jumps, and triple jumps are not permitted.'],
+            ['limit','Maximum two jump combinations, or one jump combination and one jump sequence.'],
+            ['','One jump combination or one sequence may contain three jumps.'],
+            ['','No jump may be included more than twice.']
+          ]],
+          ['Spins', [
+            ['limit','Maximum two spins; maximum Level 4.'],
+            ['','One spin in one position; change of foot permitted, flying entry permitted.'],
+            ['','One spin of any nature.'],
+            ['','Spins must have different codes.']
+          ]],
+          ['Choreographic Sequence', [
+            ['limit','Maximum one choreographic sequence.']
+          ]]
+        ]
+      },
+      {
+        name:'Adult Gold Free Skating',
+        time:'2:50 +/- 10s',
+        sub:'Free skating program to music',
+        groups:[
+          ['Program', [['limit','Nine elements.']]],
+          ['Jump Elements', [
+            ['limit','Maximum five jump elements.'],
+            ['yes','May include an axel jump, single jumps, and double jumps no higher than double loop.'],
+            ['no','Waltz jump is not permitted.'],
+            ['limit','Maximum three jump combinations, or two jump combinations and one jump sequence.'],
+            ['','One jump combination or jump sequence may contain up to three jumps.'],
+            ['','No jump may be included more than twice. A repeated jump must be in a jump combination or jump sequence.']
+          ]],
+          ['Spins', [
+            ['limit','Maximum three spins; maximum Level 4.'],
+            ['','One must be a combination spin with a change of foot and two basic positions.'],
+            ['','One must be a flying spin.'],
+            ['','One spin of any nature.'],
+            ['','All spins must have different codes.']
+          ]],
+          ['Step Sequence', [
+            ['limit','Maximum one step sequence.']
+          ]]
+        ]
+      },
+      {
+        name:'Adult Masters Free Skating',
+        time:'3:00 +/- 10s',
+        sub:'Free skating program to music',
+        groups:[
+          ['Program', [['limit','Nine elements.']]],
+          ['Jump Elements', [
+            ['limit','Maximum five jump elements.'],
+            ['yes','All single and double jumps are permitted.'],
+            ['no','Waltz jump and triple jumps are not permitted.'],
+            ['','One must be an axel.'],
+            ['limit','Maximum three jump combinations, or two jump combinations and one jump sequence.'],
+            ['','One jump combination or jump sequence may contain up to three jumps.'],
+            ['','No jump may be included more than twice. A repeated jump must be in a jump combination or jump sequence.']
+          ]],
+          ['Spins', [
+            ['limit','Maximum three spins; maximum Level 4.'],
+            ['','One must be a combination spin with a change of foot and two basic positions.'],
+            ['','One must be a flying spin.'],
+            ['','One spin of any nature.'],
+            ['','All spins must have different codes.']
+          ]],
+          ['Step Sequence', [
+            ['limit','Maximum one step sequence.']
+          ]]
+        ]
+      },
+      {
+        name:'Adult Masters Elite Free Skating',
+        time:'3:00 +/- 10s',
+        sub:'Free skating program to music',
+        groups:[
+          ['Program', [['limit','Nine elements.']]],
+          ['Jump Elements', [
+            ['limit','Maximum five jump elements.'],
+            ['yes','All jumps except Waltz jump are permitted.'],
+            ['','One must be an axel.'],
+            ['limit','Maximum three jump combinations, or two jump combinations and one jump sequence.'],
+            ['','One jump combination or jump sequence may contain up to three jumps.'],
+            ['','No jump may be included more than twice. A repeated jump must be in a jump combination or jump sequence.']
+          ]],
+          ['Spins', [
+            ['limit','Maximum three spins; maximum Level 4.'],
+            ['','One must be a combination spin with a change of foot and two basic positions.'],
+            ['','One must be a flying spin.'],
+            ['','One spin of any nature.'],
+            ['','All spins must have different codes.']
+          ]],
+          ['Step Sequence', [
+            ['limit','Maximum one step sequence.']
+          ]]
+        ]
+      }
+    ]
+  },
+  {
+    id:'ice-dance',
+    label:'Ice Dance',
+    badge:'Section 3',
+    color:'dance',
+    intro:'Adult ice dance is organized into Partnered Pattern Dance, Solo Dance, and Free Dance.',
+    subtabs:['Partnered Pattern Dance','Solo Dance','Free Dance'],
+    categories:[
+      {name:'Adult STAR 4/5 Dance', time:'Partnered pattern', sub:'Partnered Pattern Dance', groups:[['Pattern Dances', [['','Pattern Dance One: three sequences of the Fiesta Tango.'],['','Pattern Dance Two: two sequences of the Willow Waltz.']]]]},
+      {name:'Adult STAR 6/7 Dance', time:'Partnered pattern', sub:'Partnered Pattern Dance', groups:[['Pattern Dances', [['','Pattern Dance One: four sequences of the Fourteenstep.'],['','Pattern Dance Two: four sequences of the Foxtrot.']]]]},
+      {name:'Adult STAR 8/9 Dance', time:'Partnered pattern', sub:'Partnered Pattern Dance', groups:[['Pattern Dances', [['','Pattern Dance One: two sequences of the Tango.'],['','Pattern Dance Two: two sequences of the American Waltz.']]]]},
+      {name:'Adult STAR 10/Gold Dance', time:'Partnered pattern', sub:'Partnered Pattern Dance', groups:[['Pattern Dances', [['','Pattern Dance One: two sequences of the Westminster Waltz.'],['','Pattern Dance Two: two sequences of the Argentine Tango.']]]]},
+      {name:'Adult Elite Dance', time:'Partnered pattern', sub:'Partnered Pattern Dance', groups:[['Pattern Dances', [['','Pattern Dance One: two sequences of the Westminster Waltz.'],['','Pattern Dance Two: four sequences of the Rhumba.']]]]},
+      {name:'Adult Bronze (STAR 4/5) Solo Dance', time:'Solo dance', sub:'Solo Dance', groups:[['Pattern Dances', [['','Pattern Dance One: three sequences of the Fiesta Tango.'],['','Pattern Dance Two: two sequences of the Willow Waltz.']]]]},
+      {name:'Adult Silver (STAR 6/7) Solo Dance', time:'Solo dance', sub:'Solo Dance', groups:[['Pattern Dances', [['','Pattern Dance One: four sequences of the Fourteenstep.'],['','Pattern Dance Two: four sequences of the Foxtrot.']]]]},
+      {name:'Adult Gold (STAR 8/9) Solo Dance', time:'Solo dance', sub:'Solo Dance', groups:[['Pattern Dances', [['','Pattern Dance One: two sequences of the Tango.'],['','Pattern Dance Two: two sequences of the American Waltz.']]]]},
+      {name:'Adult Elite (STAR 10/Gold) Solo Dance', time:'Solo dance', sub:'Solo Dance', groups:[['Pattern Dances', [['','Pattern Dance One: two sequences of the Westminster Waltz.'],['','Pattern Dance Two: two sequences of the Argentine Tango.']]]]},
+      {name:'Adult Open Solo Rhythm Dance', time:'Solo rhythm', sub:'Solo Dance', groups:[['Rhythm Dance', [['','Quickstep. Follow criteria as outlined in the STAR Program Requirements Guide.']]]]},
+      {name:'Adult Bronze Free Dance', time:'1:50 +/- 10s', sub:'Free Dance. Dance teams must be composed of two skaters.', groups:[['Elements', [['limit','Maximum one short dance lift, maximum seven seconds in duration; called to maximum Level 1.'],['limit','Maximum one dance spin. No combination.'],['limit','Maximum one diagonal step sequence in hold - Style B.']]]]},
+      {name:'Adult Silver Free Dance', time:'2:30 +/- 10s', sub:'Free Dance. Dance teams must be composed of two skaters.', groups:[['Elements', [['limit','Maximum one short dance lift, maximum seven seconds in duration; called to maximum Level 2.'],['limit','Maximum one dance spin.'],['limit','Maximum one set of synchronized twizzles with minimum two steps and up to four steps between. Partners must be in contact at some point between the first and second twizzles.'],['limit','Maximum one straight line or curve step sequence in hold - Style B.']]]]},
+      {name:'Adult Gold Free Dance', time:'3:00 +/- 10s', sub:'Free Dance. Dance teams must be composed of two skaters.', groups:[['Elements', [['limit','Maximum two different type short lifts up to 8 seconds, or one combination lift up to 13 seconds.'],['limit','Maximum one dance spin.'],['limit','Maximum one set of synchronized twizzles with minimum two steps and up to four steps between. Partners must be in contact at some point between the first and second twizzles.'],['limit','Maximum one straight line or one curve step sequence in hold - Style B.']]]]}
+    ]
+  },
+  {
+    id:'pairs',
+    label:'Pairs',
+    badge:'Section 4',
+    color:'pairs',
+    intro:'Adult pairs teams must be composed of two skaters.',
+    categories:[
+      {
+        name:'Adult Pair',
+        time:'2:20 +/- 10s',
+        sub:'For skaters approximately at the Bronze to Silver Free Skating level.',
+        groups:[['Elements', [
+          ['limit','Maximum one lift from Group 1 or Group 2 with a minimum half revolution for the man and one revolution for the woman. The man’s lifting hand(s) should be above their shoulder line.'],
+          ['no','Variations of the woman’s position, no-handed and one-handed lifts, combination lifts, and twist lifts are not permitted. A different take-off counts as a different lift.'],
+          ['limit','Maximum one throw jump; single only. 1A is not permitted.'],
+          ['limit','Maximum one solo jump; single jumps only.'],
+          ['limit','Maximum one jump combination with maximum two listed jumps. Only single jumps are allowed.'],
+          ['limit','Maximum one pair spin; may be in combination.'],
+          ['limit','Maximum one pivot figure.'],
+          ['limit','Maximum one choreographic sequence.']
+        ]]]
+      },
+      {
+        name:'Adult Masters Pair',
+        time:'3:30',
+        sub:'For skaters approximately at the Gold to Masters Free Skating category level.',
+        groups:[['Elements', [
+          ['limit','Maximum three different lifts, one of which may be a twist lift.'],
+          ['limit','Maximum two throw jumps; single or double.'],
+          ['limit','Maximum one solo jump. Single, double, or triple jumps are permitted.'],
+          ['limit','Maximum one jump combination or jump sequence; may include three jumps.'],
+          ['limit','Maximum one pairs spin; may be in combination.'],
+          ['limit','Maximum one solo spin; may be in combination.'],
+          ['limit','Maximum one pivot figure or death spiral.'],
+          ['limit','Maximum one step sequence.']
+        ]]]
+      }
+    ]
+  },
+  {
+    id:'artistic',
+    label:'Artistic Free Skating',
+    badge:'Section 5',
+    color:'artistic',
+    intro:'Artistic programs focus on interpretation, mood, theme, story, movement quality, and use of music rather than technical difficulty.',
+    notes:[
+      'Costumes must be simple and modest to enhance interpretation and must not be theatrical.',
+      'Props of any kind are not permitted. Skaters or teams wanting theatrical performance are directed to Showcase categories.',
+      'Content criteria include compositional form, dynamics, use of space, use of full body, and use of music.'
+    ],
+    categories:[
+      {name:'Adult Introductory Artistic Free Skating', time:'1:30 +/- 10s', sub:'For skaters approximately at the Intro Open Free Skating category level.', groups:[['Program', [['','One artistic program to music.']]]]},
+      {name:'Adult Bronze Artistic Free Skating', time:'1:30 +/- 10s', sub:'For skaters approximately at the Bronze Free Skating level.', groups:[['Program', [['','One artistic program to music.']]]]},
+      {name:'Adult Silver Artistic Free Skating', time:'1:30 +/- 10s', sub:'For skaters approximately at the Silver Free Skating level.', groups:[['Program', [['','One artistic program to music.']]]]},
+      {name:'Adult Gold Artistic Free Skating', time:'1:30 +/- 10s', sub:'For skaters approximately at the Gold and/or Masters Free Skating level.', groups:[['Program', [['','One artistic program to music.']]]]},
+      {name:'Adult Elite Artistic Free Skating', time:'2:00 +/- 10s', sub:'For skaters approximately at the level of former competitive skaters.', groups:[['Program', [['','One artistic program to music.']]]]},
+      {name:'Adult Open Partner (Couples) Artistic Free Skating', time:'1:40 +/- 10s', sub:'For skaters approximately at the Bronze to Silver Free Skating level (both skaters).', groups:[['Program', [['','One artistic program to music.']]],['Lifts', [['no','Overhead lifts are not permitted and will be considered as an illegal element.'],['yes','Small dance lifts are permitted when the lifting partner does not raise their hands higher than the shoulder level.']]]]},
+      {name:'Adult Open Masters Partner (Couples) Artistic Free Skating', time:'2:10 +/- 10s', sub:'For skaters approximately at the Gold to Elite Masters Free Skating level (both skaters).', groups:[['Program', [['','One artistic program to music.']]],['Lifts', [['no','Overhead lifts are not permitted and will be considered as an illegal element.'],['yes','Small dance lifts are permitted when the lifting partner does not raise their hands higher than the shoulder level.']]]]}
+    ]
+  },
+  {
+    id:'showcase',
+    label:'Showcase',
+    badge:'Section 6',
+    color:'showcase',
+    intro:'Showcase programs focus on entertainment through theatrics or artistic abilities. Programs may tell a story, create a mood, or have an obvious theme.',
+    notes:[
+      'Theatrical costumes and hand props are permitted.',
+      'Feathers and boas of any type are not permitted.',
+      'Vocal music is permitted.',
+      'All single jumps are permitted. Jumps of any higher rotation will be subject to an illegal element violation if included.',
+      'A maximum of one minute is permitted before each performance for warm-up and prop set-up.'
+    ],
+    categories:[
+      {name:'Adult Introductory Showcase', time:'Max 1:40', sub:'For skaters approximately at the Intro Open Free Skating category level.', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]},
+      {name:'Adult Bronze Showcase', time:'Max 1:40', sub:'For skaters approximately at the Bronze Free Skating level.', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]},
+      {name:'Adult Silver Showcase', time:'Max 1:40', sub:'For skaters approximately at the Silver Free Skating level.', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]},
+      {name:'Adult Gold Showcase', time:'Max 1:40', sub:'For skaters approximately at the Gold and/or Masters Free Skating level.', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]},
+      {name:'Adult Elite Showcase', time:'Max 1:40', sub:'For skaters approximately at the level of former competitive skaters.', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]},
+      {name:'Adult Open Partner Showcase', time:'Max 1:40', sub:'For skaters approximately at the Bronze to Silver Free Skating level (both skaters).', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]},
+      {name:'Adult Open Masters Partner Showcase', time:'Max 1:40', sub:'For skaters approximately at the Gold to Elite Masters Free Skating level (both skaters).', groups:[['Program', [['','Program time is a maximum of 1 minute 40 seconds.']]]]}
+    ]
+  },
+  {
+    id:'synchro',
+    label:'Synchronized Skating',
+    badge:'Section 7',
+    color:'synchro',
+    intro:'Adult synchronized skating categories are team events.',
+    categories:[
+      {
+        name:'Adult SyS I',
+        time:'Max 3:10',
+        sub:'Teams consist of 8 to 20 skaters. Skaters must have reached age 18 before July 1 preceding the competition.',
+        groups:[['Well-Balanced Program', [
+          ['','Intersection element; optional point of intersection.'],
+          ['','No hold element with optional step sequence.'],
+          ['','Pivoting element: block or line, in two parallel lines, different shape from artistic elements.'],
+          ['','Travelling element: must include circle shape.'],
+          ['','Artistic element: block or line, different shape from pivoting element.'],
+          ['','Artistic element: wheel.'],
+          ['','If there is a second segment, the team performs its free program a second time.']
+        ]]]
+      },
+      {
+        name:'Adult SyS II',
+        time:'Max 3:10',
+        sub:'Teams consist of 8 to 20 skaters. Skaters must have reached age 18 before July 1 preceding the competition.',
+        groups:[['Well-Balanced Program', [
+          ['','Intersection element; optional point of intersection.'],
+          ['','Pivoting element: block or line, in two parallel lines, different shape from artistic and linear/rotating elements.'],
+          ['','Travelling element: must include circle shape.'],
+          ['','Choice of linear element or rotating element from block, line, or wheel; different shape from artistic and pivoting elements.'],
+          ['','Choice of one artistic element from block, line, or wheel; different shape from linear/rotating and pivoting elements.'],
+          ['limit','All elements and additional features called to a maximum of Level 2.'],
+          ['','If there is a second segment, the team performs its free program a second time.']
+        ]]]
+      },
+      {
+        name:'Adult SyS III',
+        time:'Max 2:40',
+        sub:'Teams consist of 8 to 20 skaters. Skaters must have reached age 18 before July 1 preceding the competition.',
+        groups:[['Well-Balanced Program', [
+          ['','Intersection element; optional point of intersection.'],
+          ['','Pivoting element: block or line, in two parallel lines, different shape from linear element.'],
+          ['','Rotating element: circle.'],
+          ['','Linear element: block or line.'],
+          ['','Rotating element: wheel.'],
+          ['limit','All elements called to a maximum of Level 1 except the intersection and point of intersection, which are called to maximum Level Base.'],
+          ['','If there is a second segment, the team performs its free program a second time.']
+        ]]]
+      }
+    ]
+  }
+];
+
+function makeGroup(label, items){
+  return [label, items.map(item => Array.isArray(item) ? item : ['', item])];
+}
+
+const isuSections = [
+  {
+    id:'free-skating',
+    label:'Free Skating',
+    color:'free',
+    intro:'ISU Free Skating is offered at Bronze, Silver, Gold, Masters, and Masters Elite levels.',
+    notes:[
+      'Competitors are recommended to enter at a level appropriate to their current skating ability.',
+      'Competitors are not obliged to enter the same level as in previous years.',
+      'Each category may be capped at a maximum of 32 skaters.'
+    ],
+    categories:[
+      {
+        name:'Bronze Free Skating',
+        time:'1:40 +/- 10s',
+        groups:[
+          makeGroup('Program', ['Well-balanced free skating program. Only features up to and including Level 1 will be counted.']),
+          makeGroup('Jump Elements', [
+            'Maximum four jump elements.',
+            'Only single jumps are permitted.',
+            'Axel type jumps, double jumps, and triple jumps are not permitted.',
+            'One jump combination is permitted, with two listed jumps.',
+            'Each listed jump may be performed a maximum of two times.',
+            'Waltz jumps will be ignored.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum two spins of different abbreviations.',
+            'Both spins must be spins in one position, with or without a change of foot.',
+            'Flying spins are not permitted.'
+          ]),
+          makeGroup('Choreographic Sequence', [
+            'Maximum one choreographic sequence utilizing at least half of the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Silver Free Skating',
+        time:'2:00 +/- 10s',
+        groups:[
+          makeGroup('Program', ['Well-balanced free skating program. Only features up to and including Level 2 will be counted.']),
+          makeGroup('Jump Elements', [
+            'Maximum four jump elements.',
+            'Any single jumps are permitted, including single Axel.',
+            'Double jumps and triple jumps are not permitted.',
+            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
+            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.',
+            'Each listed jump may be performed a maximum of two times.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum two spins of different abbreviations.',
+            'One spin must be a spin in one position, with or without a change of foot.'
+          ]),
+          makeGroup('Choreographic Sequence', [
+            'Maximum one choreographic sequence, fully utilizing the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Gold Free Skating',
+        time:'2:50 +/- 10s',
+        groups:[
+          makeGroup('Program', ['Well-balanced free skating program. Only features up to and including Level 3 will be counted.']),
+          makeGroup('Jump Elements', [
+            'Maximum five jump elements.',
+            'Single jumps, including single Axel, and double jumps are permitted.',
+            'Double flip, double Lutz, double Axel, and triple jumps are not permitted.',
+            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
+            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.',
+            'Each listed jump may be performed a maximum of two times.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum three spins of different abbreviations.',
+            'One spin must be a spin combination with change of foot.',
+            'One spin must be a flying spin or a spin with flying entrance.'
+          ]),
+          makeGroup('Step Sequence', [
+            'Maximum one step sequence, fully utilizing the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Free Skating',
+        time:'3:00 +/- 10s',
+        groups:[
+          makeGroup('Program', ['Well-balanced free skating program. Features up to and including Level 4 will be counted.']),
+          makeGroup('Jump Elements', [
+            'Maximum five jump elements.',
+            'One jump element must be an Axel type jump.',
+            'Single and double jumps are permitted.',
+            'Triple and quadruple jumps are not permitted.',
+            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
+            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.',
+            'Each listed jump may be performed a maximum of two times.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum three spins of different abbreviations.',
+            'One spin must be a spin combination with change of foot.',
+            'One spin must be a flying spin or a spin with flying entrance.',
+            'One spin must be a spin with only one position.'
+          ]),
+          makeGroup('Step Sequence', [
+            'Maximum one step sequence, fully utilizing the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Elite Free Skating',
+        time:'3:00 +/- 10s',
+        note:'Same technical requirements as Masters, except triple jumps are permitted.',
+        groups:[
+          makeGroup('Program', ['Intended for skaters who competed previously at junior or senior level, or skaters who wish to include double Axel and/or triple jumps.']),
+          makeGroup('Jump Elements', [
+            'Maximum five jump elements.',
+            'Single, double, and triple jumps are permitted.',
+            'Quadruple jumps are not permitted.',
+            'One jump element must be an Axel type jump.',
+            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
+            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.'
+          ]),
+          makeGroup('Spins and Steps', [
+            'Same spin and step sequence structure as Masters Free Skating.'
+          ])
+        ]
+      }
+    ]
+  },
+  {
+    id:'pairs',
+    label:'Pair Free Skating',
+    color:'pairs',
+    intro:'ISU Pair Free Skating is offered at Adult, Intermediate, Masters, and Masters Elite levels.',
+    notes:[
+      'Each pair team must consist of one man and one woman.',
+      'Each skater may compete with only one and the same partner in Pair Skating competitions.',
+      'If a pair team has skaters of different skill levels, it is expected that they enter at the level of the more skilled skater.'
+    ],
+    categories:[
+      {
+        name:'Adult Pair Free Skating',
+        time:'2:20 +/- 10s',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Elements', [
+            'Maximum one Group 1 or Group 2 lift.',
+            'Maximum one single throw jump; throw single Axel is not permitted.',
+            'Maximum one solo single jump; Axel type jumps are not permitted.',
+            'Maximum one jump combination with two listed jumps; only single jumps are allowed.',
+            'Maximum one pair spin.',
+            'Maximum one pivot figure.',
+            'Maximum one choreographic sequence.'
+          ]),
+          makeGroup('Not Permitted', [
+            'Lifts from Groups 3, 4, and 5.',
+            'Twist lifts.',
+            'Double and triple jumps.'
+          ])
+        ]
+      },
+      {
+        name:'Intermediate Pair Free Skating',
+        time:'2:40 +/- 10s',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Elements', [
+            'Maximum two different Group 1 or Group 2 lifts.',
+            'Maximum one single throw jump, including throw single Axel.',
+            'Maximum one solo single jump, including single Axel.',
+            'Maximum one jump combination with three listed jumps or one jump sequence.',
+            'Maximum one pair spin or pair combination spin.',
+            'Maximum one death spiral or pivot figure.',
+            'Maximum one step sequence, fully utilizing the ice surface.'
+          ]),
+          makeGroup('Not Permitted', [
+            'Lifts from Groups 3, 4, and 5.',
+            'Twist lifts.',
+            'Double and triple jumps.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Pair Free Skating',
+        time:'3:30 +/- 10s',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Elements', [
+            'Maximum three different lifts; one may be a twist lift.',
+            'Maximum two throw jumps, single or double.',
+            'Maximum one solo jump; single and double jumps are permitted.',
+            'Maximum one jump combination with three listed jumps or one jump sequence.',
+            'Maximum one pair spin or pair spin combination.',
+            'Maximum one solo spin.',
+            'Maximum one death spiral or pivot figure.',
+            'Maximum one step sequence, fully utilizing the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Elite Pair Free Skating',
+        time:'3:30 +/- 10s',
+        format:'Two skaters.',
+        note:'Same technical requirements as Masters Pair Free Skating, except triple jumps are allowed.',
+        groups:[
+          makeGroup('Elements', [
+            'Use the Masters Pair Free Skating structure.',
+            'Triple jumps are allowed.'
+          ])
+        ]
+      }
+    ]
+  },
+  {
+    id:'ice-dance',
+    label:'Ice Dance',
+    color:'dance',
+    intro:'ISU Ice Dance separates Couples Pattern Dance, Couples Rhythm Dance, and Couples Free Dance. Solo Ice Dance is included for the North American competition only.',
+    subtabs:['Couples Pattern Dance','Couples Rhythm Dance','Couples Free Dance','Solo Ice Dance'],
+    categories:[
+      {name:'Bronze Couples Pattern Dance', time:'Pattern dance', subtab:'Couples Pattern Dance', format:'Two skaters.', groups:[makeGroup('Pattern Dances', ['Willow Waltz: two sequences.','Tango Fiesta: two sequences.'])]},
+      {name:'Silver Couples Pattern Dance', time:'Pattern dance', subtab:'Couples Pattern Dance', format:'Two skaters.', groups:[makeGroup('Pattern Dances', ['American Waltz: two sequences.','Tango: two sequences.'])]},
+      {name:'Gold Couples Pattern Dance', time:'Pattern dance', subtab:'Couples Pattern Dance', format:'Two skaters.', groups:[makeGroup('Pattern Dances', ['Westminster Waltz: two sequences.','Silver Samba: two sequences.'])]},
+      {name:'Masters / Masters Elite Couples Pattern Dance', time:'Pattern dance', subtab:'Couples Pattern Dance', format:'Two skaters.', groups:[makeGroup('Pattern Dances', ['Ravensburger Waltz: two sequences.','Cha Cha Congelado: two sequences.','Masters Elite follows Masters Pattern Dance technical requirements.'])]},
+      {name:'Silver Couples Rhythm Dance', time:'2:20 +/- 10s', subtab:'Couples Rhythm Dance', format:'Two skaters.', groups:[makeGroup('Season Pattern', ['2025-2026 rhythm: music, dance styles, and feeling of the 1990s.','Gold and Silver use the Rhythm Dance structure with level-specific pattern dance element treatment.'])]},
+      {name:'Gold Couples Rhythm Dance', time:'2:20 +/- 10s', subtab:'Couples Rhythm Dance', format:'Two skaters.', groups:[makeGroup('Season Pattern', ['2025-2026 rhythm: music, dance styles, and feeling of the 1990s.','Pattern dance is judged without key points.'])]},
+      {name:'Masters / Masters Elite Couples Rhythm Dance', time:'2:50 +/- 10s', subtab:'Couples Rhythm Dance', format:'Two skaters.', groups:[makeGroup('Season Pattern', ['2025-2026 rhythm: Rhumba / Quickstep.','Pattern dance is judged with key points.'])]},
+      {name:'Bronze Couples Free Dance', time:'1:50 +/- 10s', subtab:'Couples Free Dance', format:'Two skaters.', groups:[makeGroup('Elements', ['Maximum one short lift, maximum eight seconds; only maximum Level 1 lift will be counted.','Maximum one dance spin; no combination.','One choreographic sequence using at least half of the ice.'])]},
+      {name:'Silver Couples Free Dance', time:'2:30 +/- 10s', subtab:'Couples Free Dance', format:'Two skaters.', groups:[makeGroup('Elements', ['Maximum one short lift, maximum eight seconds; only maximum Level 2 lift will be counted.','One dance spin.','Maximum one straight line or curve step sequence in hold, Style B.','One set of synchronized twizzles with minimum two and maximum four steps between first and second twizzles.'])]},
+      {name:'Gold Couples Free Dance', time:'3:00 +/- 10s', subtab:'Couples Free Dance', format:'Two skaters.', groups:[makeGroup('Elements', ['Maximum two different short lifts up to eight seconds, or one combination lift up to thirteen seconds.','One dance spin.','Maximum one straight line or curve step sequence in hold, Style B.','One set of synchronized twizzles with minimum two and maximum four steps between first and second twizzles.'])]},
+      {name:'Masters / Masters Elite Couples Free Dance', time:'3:10 +/- 10s', subtab:'Couples Free Dance', format:'Two skaters.', groups:[makeGroup('Elements', ['Free Dance requirements use the Masters / Masters Elite structure in the technical announcement.','Teams should confirm the current dance lift, spin, step, and twizzle requirements in the ISU announcement before choreographing.'])]},
+      {name:'Bronze Solo Pattern Dance', time:'Pattern dance', subtab:'Solo Ice Dance', groups:[makeGroup('Pattern Dances', ['Willow Waltz: two sequences.','Tango Canasta: two sequences.','No key points; up to Level 1 will be evaluated.'])]},
+      {name:'Silver Solo Pattern Dance', time:'Pattern dance', subtab:'Solo Ice Dance', groups:[makeGroup('Pattern Dances', ['European Waltz: two sequences.','Tango: two sequences.','One key point described; up to Level 2 will be evaluated.'])]},
+      {name:'Gold / Masters / Masters Elite Solo Pattern Dance', time:'Pattern dance', subtab:'Solo Ice Dance', groups:[makeGroup('Pattern Dances', ['Starlight Waltz: two sequences.','Quickstep / ChSt: two sequences.','Two key points; up to Level 3 will be evaluated.'])]},
+      {name:'Masters / Masters Elite Solo Rhythm Dance', time:'2:50 +/- 10s', subtab:'Solo Ice Dance', groups:[makeGroup('Rhythm Dance', ['2025-2026 rhythm: Rhumba / Quickstep.','Music, dance styles, and feeling of the 1990s.'])]},
+      {name:'Bronze Solo Free Dance', time:'1:30 +/- 10s', subtab:'Solo Ice Dance', groups:[makeGroup('Free Dance', ['Music may be vocal and must be suitable for ice dance as a sport discipline.','One short edge element, one dance spin, one choreographic character step sequence, one sequential twizzle series.','Up to Level 1 will be considered.'])]},
+      {name:'Silver Solo Free Dance', time:'1:50 +/- 10s', subtab:'Solo Ice Dance', groups:[makeGroup('Free Dance', ['Music may be vocal and must be suitable for ice dance as a sport discipline.','One short edge element, one dance spin, one choreographic character step sequence, one sequential twizzle series, and one additional choreographic element.','Up to Level 2 will be considered.'])]},
+      {name:'Gold Solo Free Dance', time:'2:20 +/- 10s', subtab:'Solo Ice Dance', groups:[makeGroup('Free Dance', ['One short edge element, one dance spin, one Style B step sequence, one sequential twizzle series, and choreographic elements.','Up to Level 3 will be considered.'])]}
+    ]
+  },
+  {
+    id:'artistic',
+    label:'Artistic Free Skating',
+    color:'artistic',
+    intro:'ISU Artistic Free Skating is judged only on Program Components, with no technical panel and no technical mark.',
+    notes:[
+      'This is not a theatre-on-ice, showcase, or spotlight event.',
+      'Props and accessories may not be used in any part of artistic programs.',
+      'Falls are not subject to a deduction, but may have a negative impact on Program Components.'
+    ],
+    categories:[
+      {name:'Bronze Artistic Free Skating', time:'1:30 +/- 10s', groups:[makeGroup('Singles Requirements', ['At least one and maximum two single jumps must be included.','Waltz jump is not considered a listed single jump.','At least one and maximum two spins must be included.','Axel type jumps, double jumps, triple jumps, and combination jumps are not allowed.'])]},
+      {name:'Silver Artistic Free Skating', time:'1:30 +/- 10s', groups:[makeGroup('Singles Requirements', ['Same singles artistic structure as Bronze.','Axel type jumps, double jumps, triple jumps, and combination jumps are not allowed.'])]},
+      {name:'Gold Artistic Free Skating', time:'1:30 +/- 10s', groups:[makeGroup('Singles Requirements', ['Same singles artistic structure as Bronze and Silver.','Axel type jumps, double jumps, triple jumps, and combination jumps are not allowed.'])]},
+      {name:'Masters Artistic Free Skating', time:'2:00 +/- 10s', groups:[makeGroup('Singles Requirements', ['At least one and maximum two single jumps must be included.','At least one and maximum two spins must be included.','Axels are permitted.','Double jumps, triple jumps, and combination jumps are not allowed.'])]},
+      {name:'Masters Elite Artistic Free Skating', time:'2:00 +/- 10s', groups:[makeGroup('Singles Requirements', ['Same singles artistic structure as Masters Artistic Free Skating.','Axels are permitted.','Double jumps, triple jumps, and combination jumps are not allowed.'])]},
+      {name:'Adult Pair Artistic Free Skating', time:'1:40 +/- 10s', format:'Two skaters.', groups:[makeGroup('Pair Artistic Requirements', ['Each pair artistic team must consist of one man and one woman.','Program must include at least two and no more than four pair elements.','Axel type jumps, double jumps, and triple jumps are not permitted.','Pair spin combinations are not permitted.'])]},
+      {name:'Intermediate Pair Artistic Free Skating', time:'1:40 +/- 10s', format:'Two skaters.', groups:[makeGroup('Pair Artistic Requirements', ['Program must include at least two and no more than four elements selected from throw jump, pair spin, death spiral or pivot figure, and Group 1 or Group 2 lift.','Axel type jumps, double jumps, and triple jumps are not permitted.'])]},
+      {name:'Masters / Masters Elite Pair Artistic Free Skating', time:'2:10 +/- 10s', format:'Two skaters.', groups:[makeGroup('Pair Artistic Requirements', ['Program must include at least two and no more than four pair elements.','Double and triple jumps are not permitted.','Waltz jump is not considered a listed single jump.','Masters Elite follows Masters Pair Artistic technical requirements.'])]}
+    ]
+  },
+  {
+    id:'synchronized',
+    label:'Synchronized Skating',
+    color:'synchro',
+    intro:'ISU Synchronized Skating adult competitions consist of a Free Skating program only.',
+    notes:[
+      'Synchronized Skating is offered at Adult and Masters levels.',
+      'A team consists of 12 to 16 skaters and may include both women and men.',
+      'Teams may list up to four alternates.'
+    ],
+    categories:[
+      {
+        name:'Adult Synchronized Free Skating',
+        time:'3:00 +/- 10s',
+        groups:[
+          makeGroup('Required Elements', [
+            'Intersection element; point of intersection is optional and called if included.',
+            'Pivoting element: block.',
+            'Traveling element.',
+            'Rotating element.',
+            'Choice of one mixed element or one artistic element: block, circle, line, or wheel.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Synchronized Free Skating',
+        time:'3:00 +/- 10s',
+        groups:[
+          makeGroup('Category', [
+            'Masters is for teams formed of former higher-level or competitive skaters in any discipline, and for higher-level national test skaters.',
+            'Standard deductions according to ISU synchronized skating rules apply for interruptions and falls.'
+          ])
+        ]
+      }
+    ]
+  }
+];
+
+const usSections = [
+  {
+    id:'free-skating',
+    label:'Free Skating',
+    color:'free',
+    intro:'U.S. adult free skate levels are tied to adult and standard-track test eligibility. All adult program times are maximum times; there is no +/- 10 second leeway.',
+    notes:[
+      'Age and test qualifications are checked as of the competition close of entries.',
+      'Skaters may not skate up. If a test passed after close of entries exceeds the maximum requirement for the event, the skater can become ineligible for that event.',
+      'Adult sectionals include championship qualifying events; U.S. Adult Championships also offers nonqualifying adult free skate events.'
+    ],
+    categories:[
+      {
+        name:'Adult Pre-Bronze Free Skate',
+        time:'1:40 max',
+        groups:[
+          makeGroup('Program', ['Six elements.']),
+          makeGroup('Jump Elements', [
+            'Maximum four jump elements.',
+            'Single and half-revolution jumps are permitted except Lutz, Axel, double, and triple jumps.',
+            'Maximum two jump combinations or sequences.',
+            'A jump sequence is any listed jump immediately followed by an Axel-type waltz jump.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum two spins; maximum Level 1.',
+            'Flying spins are not permitted.',
+            'Two-foot spin receives credit only at Adult Pre-Bronze and Adult Bronze.'
+          ]),
+          makeGroup('Steps', ['Connecting steps throughout the program are required.'])
+        ]
+      },
+      {
+        name:'Adult Bronze Free Skate',
+        time:'1:50 max',
+        groups:[
+          makeGroup('Program', ['Seven elements.']),
+          makeGroup('Jump Elements', [
+            'Maximum four jump elements.',
+            'All single jumps are permitted except single Axel.',
+            'Single Axel, double jumps, and triple jumps are not permitted.',
+            'Maximum two jump combinations or sequences; one may contain up to three jumps.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum two spins; maximum Level 1.',
+            'Spins must have different codes.',
+            'Flying spins are not permitted.'
+          ]),
+          makeGroup('Choreographic Step Sequence', [
+            'Maximum one choreographic step sequence using at least half of the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Championship Adult Silver / Adult Silver Free Skate',
+        time:'2:10 max',
+        groups:[
+          makeGroup('Program', ['Eight elements. Championship Adult Silver is a qualifying adult-track event; Adult Silver may also be offered as nonqualifying.']),
+          makeGroup('Jump Elements', [
+            'Maximum five jump elements.',
+            'All single jumps are permitted, including single Axel.',
+            'Double jumps and triple jumps are not permitted.',
+            'Maximum two jump combinations, or one jump combination and one jump sequence.',
+            'One jump combination or sequence may contain three jumps; the other is limited to two jumps.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum two spins; maximum Level 2.',
+            'Spins must have different codes.'
+          ]),
+          makeGroup('Choreographic Step Sequence', [
+            'Maximum one choreographic step sequence using at least half of the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Championship Adult Gold / Adult Gold Free Skate',
+        time:'2:40 max',
+        groups:[
+          makeGroup('Program', ['Nine elements. Championship Adult Gold is a qualifying adult-track event; Adult Gold may also be offered as nonqualifying.']),
+          makeGroup('Jump Elements', [
+            'Maximum five jump elements.',
+            'All single jumps, including single Axel, are permitted.',
+            'Double toe loop and double Salchow are permitted.',
+            'Double loop, double flip, double Lutz, double Axel, and triple jumps are not permitted.',
+            'Maximum three jump combinations, or two combinations and one sequence.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum three spins; maximum Level 3.',
+            'Spins must have different codes.'
+          ]),
+          makeGroup('Choreographic Step Sequence', [
+            'Maximum one choreographic step sequence fully utilizing the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Intermediate-Novice Free Skate',
+        time:'3:10 max',
+        groups:[
+          makeGroup('Program', ['Ten elements. Championship Masters Intermediate-Novice is the qualifying version.']),
+          makeGroup('Jump Elements', [
+            'Maximum six jump elements.',
+            'One jump must be an Axel-type jump or waltz jump.',
+            'All single jumps plus double toe loop, double Salchow, and double loop are permitted.',
+            'Double flip, double Lutz, double Axel, and triple jumps are not permitted.',
+            'Maximum three jump combinations, or two combinations and one sequence.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum three spins; maximum Level 4.',
+            'Spins must have different codes.'
+          ]),
+          makeGroup('Choreographic Step Sequence', [
+            'Maximum one choreographic step sequence fully utilizing the ice surface.'
+          ])
+        ]
+      },
+      {
+        name:'Masters Junior-Senior Free Skate',
+        time:'3:40 max',
+        groups:[
+          makeGroup('Program', ['Eleven elements. Championship Masters Junior-Senior is the qualifying version.']),
+          makeGroup('Jump Elements', [
+            'Maximum seven jump elements.',
+            'One jump must be an Axel-type jump or waltz jump.',
+            'Axels and multi-rotation jumps may be repeated once and must be in combination or sequence if repeated.',
+            'Maximum three jump combinations, or two combinations and one sequence.'
+          ]),
+          makeGroup('Spins', [
+            'Maximum three spins; maximum Level 4.',
+            'Spins must have different codes.'
+          ]),
+          makeGroup('Choreographic Step Sequence', [
+            'Maximum one choreographic step sequence fully utilizing the ice surface.'
+          ])
+        ]
+      }
+    ]
+  },
+  {
+    id:'pairs',
+    label:'Pairs',
+    color:'pairs',
+    intro:'U.S. adult pairs are team events. Pairs events in the adult championship structure are not divided into age classes.',
+    notes:[
+      'Championship Masters Pairs is a qualifying event. Adult Bronze, Adult Silver, Adult Gold, Masters, and Centennial Pairs may be offered as nonqualifying events.',
+      'Centennial pairs are listed separately in the U.S. Adult Championships announcement and have special entry restrictions when entered alongside other pairs levels.'
+    ],
+    categories:[
+      {
+        name:'Adult Bronze Pairs',
+        time:'2:30 max',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Elements', [
+            'Maximum one Group 1 or Group 2 lift.',
+            'Maximum one throw jump; single only, no throw single Axel.',
+            'Maximum one solo jump; single only, no single Axel.',
+            'Maximum one jump combination or sequence with single jumps only.',
+            'Maximum one solo spin and one pair spin.',
+            'Maximum one pivot figure.',
+            'Maximum one choreographic sequence.'
+          ]),
+          makeGroup('Not Permitted', [
+            'Double jumps, triple jumps, death spirals, twist lifts, and pair spin combinations.'
+          ])
+        ]
+      },
+      {
+        name:'Adult Silver Pairs',
+        time:'2:50 max',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Elements', [
+            'Maximum two lifts from Group 1 or Group 2, or one single twist lift.',
+            'Maximum one single throw jump, including throw single Axel.',
+            'Maximum one solo single jump, including single Axel.',
+            'Maximum one jump combination or sequence with single jumps only.',
+            'Maximum one solo spin and one pair spin.',
+            'Maximum one pivot figure or death spiral.',
+            'Maximum one choreographic sequence.'
+          ]),
+          makeGroup('Not Permitted', [
+            'Double jumps, triple jumps, and pair spin combinations.'
+          ])
+        ]
+      },
+      {
+        name:'Adult Gold / Masters Pairs',
+        time:'3:40 max',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Elements', [
+            'Maximum two lifts; one may be a twist lift.',
+            'Maximum two throw jumps.',
+            'Maximum one solo jump.',
+            'Maximum one jump combination or sequence with up to three jumps.',
+            'Maximum one solo spin and one pair spin.',
+            'Maximum one pivot figure or death spiral.',
+            'Maximum one choreographic sequence.'
+          ])
+        ]
+      },
+      {
+        name:'Championship Masters Pairs',
+        time:'3:40 max',
+        format:'Two skaters.',
+        groups:[
+          makeGroup('Competition Track', [
+            'Championship Masters Pairs is the adult qualifying pairs event.',
+            'Use the current U.S. adult pairs program requirements chart for exact lift, throw, jump, spin, and death spiral limits.'
+          ])
+        ]
+      }
+    ]
+  },
+  {
+    id:'ice-dance',
+    label:'Dance',
+    color:'dance',
+    intro:'U.S. adult dance separates partnered pattern dance, partnered free dance, and solo dance. Solo Dance has its own handbook and pattern dance selections.',
+    subtabs:['Partnered Pattern Dance','Partnered Free Dance','Solo Dance'],
+    categories:[
+      {name:'Adult Partnered Pattern Dance', time:'Pattern dance', subtab:'Partnered Pattern Dance', format:'Two skaters.', groups:[makeGroup('Levels Offered', ['Adult Pre-Bronze, Bronze, Pre-Silver, Silver, Pre-Gold, Gold, Masters Open, and Centennial Partnered Pattern Dance.','Use the current Adult Pattern Dance chart for the dance selection, timing, and number of sequences.'])]},
+      {name:'Championship Adult Partnered Dance', time:'Qualifying event', subtab:'Partnered Pattern Dance', format:'Two skaters.', groups:[makeGroup('Competition Track', ['Championship Adult Partnered Dance is one of the adult qualifying events at sectionals.','All age classes are combined in adult sectional championship events.'])]},
+      {name:'Adult Partnered Free Dance', time:'Varies by level', subtab:'Partnered Free Dance', format:'Two skaters.', groups:[makeGroup('Levels Offered', ['Masters Open, Adult Gold, and Adult Pre-Gold Partnered Free Dance are listed for U.S. Adult Championships nonqualifying competition.','Use the Adult Dance WBP chart for lift, spin, step, and twizzle requirements.'])]},
+      {name:'Adult Solo Pattern Dance', time:'Pattern dance', subtab:'Solo Dance', groups:[makeGroup('Levels Offered', ['Adult Bronze, Pre-Silver, Silver, Pre-Gold, and Gold Solo Pattern Dance.','Adult Championships age classes for solo dance are Class I/II 21 to 45 and Class III/IV/V 46 and older.'])]},
+      {name:'Adult Solo Free Dance', time:'Varies by level', subtab:'Solo Dance', groups:[makeGroup('Levels Offered', ['Adult Bronze, Silver, and Gold Solo Free Dance.','Use the Adult Solo Dance Handbook for current technical requirements.'])]},
+      {name:'Championship Adult Solo Dance', time:'Pattern + Free Dance', subtab:'Solo Dance', groups:[makeGroup('Competition Track', ['Championship Adult Solo Dance is one of the adult qualifying events.','For 2025-2026, the championship pattern dance is Westminster Waltz and the free dance follows Adult Gold Solo Free Dance rules.'])]}
+    ]
+  },
+  {
+    id:'showcase',
+    label:'Showcase',
+    color:'showcase',
+    intro:'U.S. showcase events focus on performance, interpretation, character, comedy, and entertainment. Showcase has separate handbook rules from free skate.',
+    notes:[
+      'Adult showcase levels are based on test level and may include Adult Bronze, Adult Silver, Adult Gold, and Masters events.',
+      'Adult Championships lists adult showcase events in Emotional Performance and combined Lyrical Pop / Character / Comedy groups.',
+      'Props and scenery rules depend on the showcase category; always check the current Showcase Handbook.'
+    ],
+    categories:[
+      {
+        name:'Emotional Performance',
+        time:'Adult levels usually max 1:40; Masters max 2:10',
+        groups:[
+          makeGroup('Style', ['Performance should portray a feeling, mood, or emotion.']),
+          makeGroup('Props and Content', [
+            'Props and scenery are permitted.',
+            'Lip synching is not permitted.',
+            'Maximum two jumps, jump combinations, or jump sequences.'
+          ])
+        ]
+      },
+      {
+        name:'Lyrical Pop',
+        time:'Adult levels usually max 1:40; Masters max 2:10',
+        groups:[
+          makeGroup('Style', ['Program uses a vocal song with lyrics and expresses the content or narrative of the music.']),
+          makeGroup('Props and Content', [
+            'Props and scenery are not permitted.',
+            'Lip synching is not permitted.',
+            'Maximum two jumps, jump combinations, or jump sequences.'
+          ])
+        ]
+      },
+      {
+        name:'Character Performance',
+        time:'Adult levels usually max 1:40; Masters max 2:10',
+        groups:[
+          makeGroup('Style', ['Skater impersonates an original or adapted character on the ice.']),
+          makeGroup('Props and Content', [
+            'Props and scenery are permitted.',
+            'Lip synching is required.',
+            'Maximum two jumps, jump combinations, or jump sequences.'
+          ])
+        ]
+      },
+      {
+        name:'Comedic Impressions',
+        time:'Adult levels usually max 1:40; Masters max 2:10',
+        groups:[
+          makeGroup('Style', ['Performance is built around comedy or comedic impressions.']),
+          makeGroup('Props and Content', [
+            'Props and scenery are permitted.',
+            'Lip synching is permitted.',
+            'Maximum two jumps, jump combinations, or jump sequences.'
+          ])
+        ]
+      },
+      {
+        name:'Duets, Trios, Ensembles, Productions',
+        time:'Varies by event',
+        format:'Two or more skaters.',
+        groups:[
+          makeGroup('Format', [
+            'Showcase also includes group formats such as duets/trios, mini production, production ensemble, and special event categories.',
+            'Props and scenery must be portable and set up within the time limits in the current Showcase Handbook.'
+          ])
+        ]
+      }
+    ]
+  }
+];
+
+const programSources = {
+  canada:[
+    {label:'Skate Canada source', href:'https://info.skatecanada.ca/index.php/en-ca/rules-of-sport/264-adult-competition-program-requirements.html'},
+    {label:'ISU scale of values', href:'https://isu-d8g8b4b7ece7aphs.a03.azurefd.net/isudamcontainer/CMS/Corporate-Site/Governance/Transparency/ISU-Communications/2707-ISU-SOV-SinglesPairs-2025-26-25-05-01-1747377995-9986.pdf'}
+  ],
+  isu:[
+    {label:'ISU adult skating', href:'https://isu-skating.com/figure-skating/events/adult-skating/'},
+    {label:'ISU technical announcement', href:'https://isu-d8g8b4b7ece7aphs.a03.azurefd.net/isudamcontainer/CMS/Fansite/Figure-Skating/2025-2026/Events/Adult-Skating/Documents/IAFSC-Technical-Announcement-2025-26-1768710791-0108.pdf'},
+    {label:'ISU scale of values', href:'https://isu-d8g8b4b7ece7aphs.a03.azurefd.net/isudamcontainer/CMS/Corporate-Site/Governance/Transparency/ISU-Communications/2707-ISU-SOV-SinglesPairs-2025-26-25-05-01-1747377995-9986.pdf'}
+  ],
+  us:[
+    {label:'U.S. adult skating', href:'https://usfigureskating.org/skate/skating-opportunities/adult-skating'},
+    {label:'Program requirements', href:'https://usfigureskating.org/competition-program-requirements'},
+    {label:'Adult Championships announcement', href:'https://usfigureskating.org/documents/2025/12/30/FULL_Adult_Champs_Announcement.pdf'},
+    {label:'Adult singles chart', href:'https://usfigureskating.org/documents/2026/1/29/2025-26_Adult_Singles_WBP_V4.pdf'},
+    {label:'Adult pairs chart', href:'https://usfigureskating.org/documents/2026/2/11/2025-2026_Pairs_WBP.pdf'},
+    {label:'Showcase handbook', href:'https://usfigureskating.org/documents/2026/1/19/2025-2026_Showcase_Handbook_v1.3.pdf'}
+  ]
+};
+
+const programs = {
+  canada:{
+    label:'Canada',
+    color:'accent',
+    sections:canadaSections,
+    tabIds:['free-skating','ice-dance','pairs','artistic','showcase'],
+    overview:{
+      title:'Skate Canada Adult Competition Requirements',
+      season:'Current season shown: 2026-2027',
+      cards:[
+        ['Music','Vocal music is permitted in all events. If vocal music is chosen, the piece(s) must contain lyrics in good taste and appropriate for competition.'],
+        ['Falls','All falls on elements or in isolation will be called.'],
+        ['Category','Skaters are expected to enter the appropriate category based on the technical program requirements. It is expected that skaters will skate to their ability.']
+      ],
+      ageGuide:{
+        title:'Age Requirement',
+        intro:'The following age categories apply to Singles Free Skating and Artistic events.',
+        classLabel:'Age category',
+        events:[
+          ['Singles Free Skating and Artistic Events','When there are not enough entries, nearby age categories may be grouped together. Skaters should be told before the competition if this happens.']
+        ],
+        classes:[
+          ['Young Adult','18 to 27'],
+          ['Class I','28 to 37'],
+          ['Class II','38 to 47'],
+          ['Class III','48 to 57'],
+          ['Class IV','58 to 67'],
+          ['Class V','68 and older']
+        ]
+      }
+    },
+    sourceNote:'Independent study aid. Canada free skate content QA checked against the 2026-2027 Adult Free Skate Program Requirements Quick Reference Guide (March 2026). Always confirm against the current Skate Canada materials and the competition announcement.',
+    disclaimer:'Category names and program requirements belong to Skate Canada. This page is not affiliated with or endorsed by Skate Canada.'
+  },
+  isu:{
+    label:'ISU',
+    color:'accent',
+    sections:isuSections,
+    tabIds:['free-skating','pairs','ice-dance','artistic','synchronized'],
+    overview:{
+      title:'ISU Adult Figure Skating Requirements',
+      season:'Current season shown: 2025-2026',
+      cards:[
+        ['Season','Technical Requirements for ISU Supported Adult Figure Skating Competitions, 2025-2026 season. Updated September 11, 2025.'],
+        ['Events','Alexandria, North America and Oberstdorf, Germany both list Women and Men Free Skating, Artistic Free Skating, Pair Free Skating, Pair Artistic Free Skating, Couples Ice Dance, and Synchronized Skating. North America also includes Solo Ice Dance.'],
+        ['Level Choice','Competitors are recommended to enter at a level appropriate to their current skating ability. They are not obliged to enter the same level as in previous years.']
+      ],
+      ageGuide:{
+        title:'Entry Age',
+        intro:'For the 2025-2026 ISU adult competition season, entry age is measured before July 1, 2025.',
+        classLabel:'Free skating age class',
+        events:[
+          ['Free Skating, Pair Free Skating, Artistic Free Skating, Pair Artistic Free Skating, Ice Dance','Competitors must have reached at least age 28 before July 1, 2025.'],
+          ['Synchronized Skating','At least 75% of skaters must have reached age 28 before July 1, 2025. The remaining 25% must have reached age 25 before July 1, 2025.']
+        ],
+        classes:[
+          ['Class I','28 to 37'],
+          ['Class II','38 to 47'],
+          ['Class III','48 to 57'],
+          ['Class IV','58 to 67'],
+          ['Class V','68 and older']
+        ],
+        note:'The Class I-V table is listed for Women and Men Free Skating events. Age categories may be combined when fewer than three skaters register for singles Free Skating or Artistic Free Skating.'
+      }
+    },
+    sourceNote:'Independent study aid. ISU content is summarized from the Technical Requirements for ISU Supported Adult Figure Skating Competitions, 2025-2026 season, updated September 11, 2025. Always confirm against the current ISU announcement and the competition announcement.',
+    disclaimer:'Category names and program requirements belong to the International Skating Union. This page is not affiliated with or endorsed by the ISU.'
+  },
+  us:{
+    label:'US',
+    hidden:true,
+    color:'accent',
+    sections:usSections,
+    tabIds:['free-skating','pairs','ice-dance','showcase'],
+    overview:{
+      title:'U.S. Adult Figure Skating Requirements',
+      cards:[
+        ['How It Works','U.S. adult competitions divide skaters by age and test level. Many competitions offer free skate, showcase, ice dance, pairs, compulsory moves, and jump or spin events.'],
+        ['Competition Track','Adult sectionals include qualifying championship events. U.S. Adult Championships also includes nonqualifying adult events for skaters who meet the event rules.'],
+        ['Eligibility','Age and test qualifications are checked as of the close of entries. Skaters may not skate up, and adult singles eligibility depends on the highest singles or free skate test passed.']
+      ],
+      ageGuide:{
+        title:'Age Requirement',
+        intro:'U.S. adult age categories are not used the same way for every event. The common adult championship age classes below apply to singles free skate and showcase-style solo events.',
+        classLabel:'Free skate and showcase age class',
+        events:[
+          ['Singles Free Skate, Emotional Performance, Lyrical Pop / Character / Comedy','Age classes are used for these non-pairs, non-partnered events. Championship events combine age classes.'],
+          ['Solo Dance','Solo pattern dance and solo free dance use two combined classes: Class I/II 21 to 45, and Class III/IV/V 46 and older.'],
+          ['Pairs and Partnered Dance','Pairs and partnered dance events are not divided into these age classes.']
+        ],
+        classes:[
+          ['Class I','21 to 35'],
+          ['Class II','36 to 45'],
+          ['Class III','46 to 55'],
+          ['Class IV','56 to 65'],
+          ['Class V','66 and older']
+        ],
+        note:'Age and test requirements for the U.S. Adult Championships and adult sectional championships are normally met by the season entry deadline. Check the current competition announcement for the exact date.'
+      }
+    },
+    sourceNote:'Independent study aid. U.S. content is summarized from U.S. Figure Skating adult skating resources, the Competition Program Requirements page, the 2026 U.S. Adult Championships technical announcement, Adult Singles and Adult Pairs WBP charts, and the 2025-2026 Showcase Handbook. Always confirm against the current U.S. Figure Skating rulebook and competition announcement.',
+    disclaimer:'Category names and program requirements belong to U.S. Figure Skating. This page is not affiliated with or endorsed by U.S. Figure Skating.'
+  }
+};
+
+const colors = {
+  accent:['var(--accent-l)','var(--accent)','rgba(37,99,235,0.2)'],
+  free:['var(--free)','var(--free-ink)','var(--free-edge)'],
+  dance:['var(--dance)','var(--dance-ink)','var(--dance-edge)'],
+  pairs:['var(--pairs)','var(--pairs-ink)','var(--pairs-edge)'],
+  artistic:['var(--artistic)','var(--artistic-ink)','var(--artistic-edge)'],
+  showcase:['var(--showcase)','var(--showcase-ink)','var(--showcase-edge)'],
+  synchro:['var(--synchro)','var(--synchro-ink)','var(--synchro-edge)']
+};
+
+let baseValues = {
+  jumps:{'1W':0.30,'1T':0.40,'1S':0.40,'1Lo':0.50,'1F':0.50,'1Lz':0.60,'1A':1.10,'2T':1.30,'2S':1.30,'2Lo':1.70,'2F':1.80,'2Lz':2.10,'2A':3.30,'3T':4.20,'3S':4.30,'3Lo':4.90,'3F':5.30,'3Lz':5.90},
+  spins:{
+    USp:{B:1.00,1:1.20,2:1.50,3:1.90,4:2.40},
+    SSp:{B:1.10,1:1.30,2:1.60,3:2.10,4:2.50},
+    CSp:{B:1.10,1:1.40,2:1.80,3:2.30,4:2.60},
+    LSp:{B:1.20,1:1.50,2:1.90,3:2.40,4:2.70},
+    CoSp:{B:1.50,1:1.70,2:2.00,3:2.50,4:3.00},
+    CCoSp:{B:1.70,1:2.00,2:2.50,3:3.00,4:3.50},
+    FUSp:{B:1.50,1:1.70,2:2.00,3:2.40,4:2.90},
+    FSSp:{B:1.70,1:2.00,2:2.30,3:2.60,4:3.00},
+    FCSp:{B:1.60,1:1.90,2:2.30,3:2.80,4:3.20}
+  },
+  sequences:{ChSq:3.00,ChSq1:3.00,StSqB:1.50,StSq1:1.80,StSq2:2.60,StSq3:3.30,StSq4:3.90,SpSq:0.00}
+};
+
+const jumpOptions = [
+  ['','Choose jump'],['1W','Waltz jump'],['1T','Single toe loop'],['1S','Single Salchow'],['1Lo','Single loop'],['1F','Single flip'],['1Lz','Single Lutz'],['1A','Single Axel'],
+  ['2T','Double toe loop'],['2S','Double Salchow'],['2Lo','Double loop'],['2F','Double flip'],['2Lz','Double Lutz'],['2A','Double Axel'],
+  ['3T','Triple toe loop'],['3S','Triple Salchow'],['3Lo','Triple loop'],['3F','Triple flip'],['3Lz','Triple Lutz']
+];
+
+const spinOptions = [
+  ['','Choose spin'],['USp','Upright spin'],['SSp','Sit spin'],['CSp','Camel spin'],['LSp','Layback spin'],['CoSp','Combination spin'],['CCoSp','Change-foot combination spin'],['FUSp','Flying upright spin'],['FSSp','Flying sit spin'],['FCSp','Flying camel spin']
+];
+
+const levelOptions = ['B','1','2','3','4'];
+
+let plannerRules = {
+  canada:{
+    'Adult Intro Open Free Skating':{maxJumps:4,maxSpins:2,sequence:'SpSq',programElements:7,allowedJumps:['1W','1T','1S','1Lo'],requiredJumps:['1W'],noHigherThan:'1Lo',maxCombos:1,maxComboJumps:2,jumpSequences:false,repeat:'max_two',maxSpinLevel:4,spinsFlying:false,spinNotes:['Two spins in one position; spins must have different codes.']},
+    'Adult Bronze Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1W','1T','1S','1Lo','1F','1Lz'],disallowedJumps:['1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxComboJumps:2,jumpSequences:false,repeat:'max_two',maxSpinLevel:4,spinsFlying:false,spinNotes:['Two spins in one position; change of foot permitted, no flying entry.']},
+    'Adult Silver Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A'],disallowedJumps:['1W','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinNotes:['One spin in one position; change of foot permitted, flying entry permitted.','One spin of any nature.']},
+    'Adult Gold Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo'],disallowedJumps:['1W','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One CCoSp.','One flying spin.','One spin of any nature.']},
+    'Adult Masters Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A'],disallowedJumps:['1W','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['Must include 1A.','One CCoSp.','One flying spin.','One spin in one position.']},
+    'Adult Masters Elite Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],disallowedJumps:['1W'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['Must include 1A.','One CCoSp.','One flying spin.','One spin in one position.']}
+  },
+  isu:{
+    'Bronze Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz'],ignoredJumps:['1W'],disallowedJumps:['1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:1,maxComboJumps:2,repeat:'max_two',maxSpinLevel:1,spinsFlying:false,spinNotes:['Maximum Level 1.','Flying spins are not permitted.']},
+    'Silver Free Skating':{maxJumps:5,maxSpins:2,sequence:'ChSq',programElements:8,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A'],disallowedJumps:['2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:2,spinsFlying:true,spinNotes:['Maximum Level 2.']},
+    'Gold Free Skating':{maxJumps:6,maxSpins:3,sequence:'StSq',programElements:10,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo'],disallowedJumps:['2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:3,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Maximum Level 3.']},
+    'Masters Free Skating':{maxJumps:6,maxSpins:3,sequence:'StSq',programElements:10,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A'],disallowedJumps:['3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Features up to Level 4 may count.']},
+    'Masters Elite Free Skating':{maxJumps:7,maxSpins:3,sequence:'StSq',programElements:11,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:4,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Features up to Level 4 may count.']}
+  }
+};
+
+let activeProgram = 'canada';
+let activeTab = 'free-skating';
+const activeSubtabs = {'canada:ice-dance':'Partnered Pattern Dance','isu:ice-dance':'Couples Pattern Dance'};
+let plannerState = {program:'canada',category:'Adult Bronze Free Skating',elements:[]};
+
+const esc = value => (value == null ? '' : String(value)).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+
+function currentProgram(){
+  return programs[activeProgram] || programs.canada;
+}
+
+function currentSections(){
+  return currentProgram().sections || [];
+}
+
+function currentTabIds(){
+  return currentProgram().tabIds || [];
+}
+
+async function loadJsonFile(path){
+  const response = await fetch(path, {cache:'no-store'});
+  if(!response.ok) throw new Error(`Unable to load ${path}`);
+  return response.json();
+}
+
+async function loadVersionedRuleData(){
+  try{
+    const manifest = await loadJsonFile('data/rules/manifest.json');
+    const baseFile = await loadJsonFile(`data/rules/${manifest.baseValues}`);
+    const loadedRules = {};
+    await Promise.all(Object.entries(manifest.regions || {}).map(async ([region, file]) => {
+      const regionFile = await loadJsonFile(`data/rules/${file}`);
+      loadedRules[region] = regionFile.plannerRules;
+      if(programs[region]?.overview && regionFile.seasonLabel){
+        programs[region].overview.season = regionFile.seasonLabel;
+      }
+      if(programs[region] && regionFile.sourceNote){
+        programs[region].sourceNote = regionFile.sourceNote;
+      }
+    }));
+    if(baseFile.values) baseValues = baseFile.values;
+    plannerRules = {...plannerRules, ...loadedRules};
+  }catch(error){
+    console.info('Using inline planner rule fallback.', error);
+  }
+}
+
+function parseRoute(){
+  const hash = location.hash.replace('#','');
+  if(!hash) return;
+  const parts = hash.split('/');
+  if(programs[parts[0]] && !programs[parts[0]].disabled && !programs[parts[0]].hidden){
+    activeProgram = parts[0];
+    activeTab = parts[1] || currentTabIds()[0] || 'free-skating';
+  }else{
+    activeTab = hash;
+  }
+  if(!currentTabIds().includes(activeTab)){
+    activeTab = currentTabIds()[0] || 'free-skating';
+  }
+}
+
+function updateRoute(){
+  history.replaceState(null, '', `#${activeProgram}/${activeTab}`);
+}
+
+function subtabKey(section){
+  return `${activeProgram}:${section.id}`;
+}
+
+function renderAgeGuide(guide){
+  if(!guide) return '';
+  return `
+    <article class="age-guide">
+      <h2>${esc(guide.title)}</h2>
+      <p class="age-guide-intro">${esc(guide.intro)}</p>
+      <div class="age-guide-layout">
+        <div class="age-guide-column">
+          <div class="age-guide-label">Event entry</div>
+          ${guide.events.map(item => `
+            <div class="age-entry">
+              <strong>${esc(item[0])}</strong>
+              <span>${esc(item[1])}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="age-guide-column">
+          <div class="age-guide-label">${esc(guide.classLabel || 'Age class')}</div>
+          <div class="age-class-grid">
+            ${guide.classes.map(item => `
+              <div class="age-class">
+                <strong>${esc(item[0])}</strong>
+                <span>${esc(item[1])}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      ${guide.note ? `<p class="age-guide-note">${esc(guide.note)}</p>` : ''}
+    </article>
+  `;
+}
+
+function renderOverview(){
+  const overview = currentProgram().overview;
+  document.getElementById('overview-content').innerHTML = `
+    <h1>${esc(overview.title)}</h1>
+    ${overview.season ? `<div class="season-label">${esc(overview.season)}</div>` : ''}
+    <div class="overview-grid">
+      ${overview.cards.map(card => `
+        <article class="overview-card">
+          <h2>${esc(card[0])}</h2>
+          <p>${esc(card[1])}</p>
+        </article>
+      `).join('')}
+    </div>
+    ${renderAgeGuide(overview.ageGuide)}
+  `;
+}
+
+function renderGeneral(){
+  return `
+    <section class="section" id="general" style="--section-bg:var(--accent-l);--section-ink:var(--accent);--section-edge:rgba(37,99,235,0.2)">
+      <div class="section-head">
+        <div class="section-title">
+          <h2>General Information</h2>
+          <p>High-level rules and age categories before the event-specific requirements.</p>
+        </div>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card"><h3>Music and deductions</h3><p>Vocal music is permitted in all events. If vocal music is chosen, the piece(s) must contain lyrics in good taste and appropriate for competition. All falls on elements or in isolation will be called.</p></article>
+        <article class="guide-card"><h3>How to enter</h3><p>Maximum element requirements have been established for Adult Free Skating, Adult Free Dance, and Adult Pairs events. There are no minimum requirements. Skaters are expected to enter the appropriate category based on the technical program requirements.</p></article>
+      </div>
+      <article class="guide-card">
+        <h3>Age categories for Singles Free Skating and Artistic events</h3>
+        <ul class="age-grid">
+          <li><strong>Young Adult</strong>18 to 27 years</li>
+          <li><strong>Class I</strong>28 to 37 years</li>
+          <li><strong>Class II</strong>38 to 47 years</li>
+          <li><strong>Class III</strong>48 to 57 years</li>
+          <li><strong>Class IV</strong>58 to 67 years</li>
+          <li><strong>Class V</strong>68 years and older</li>
+        </ul>
+      </article>
+    </section>
+  `;
+}
+
+function renderRuleList(items){
+  return `<ul class="rule-list">${items.map(item => `<li class="${esc(item[0])}">${esc(item[1])}</li>`).join('')}</ul>`;
+}
+
+function renderCategory(category){
+  const programGroup = category.groups.find(group => group[0] === 'Program');
+  const programSummary = programGroup && programGroup[1].length
+    ? programGroup[1][0][1]
+    : '';
+  const requirementGroups = category.groups.map(group => {
+    if(group[0] !== 'Program') return group;
+    const remainingItems = group[1].slice(1);
+    return remainingItems.length ? [group[0], remainingItems] : null;
+  }).filter(Boolean);
+  const groups = requirementGroups.map(group => `
+    <div class="rule-group">
+      <div class="rule-label">${esc(group[0])}</div>
+      ${renderRuleList(group[1])}
+    </div>
+  `).join('');
+  const showTime = category.time && !['Partnered pattern','Solo dance','Solo rhythm','Pattern dance'].includes(category.time);
+  const partnerReminder = category.format || (category.name.includes('Partner') ? 'Two skaters.' : '');
+  const recommended = /^(For skaters|For former)/.test(category.sub || '') ? category.sub : '';
+  return `
+    <article class="category-card">
+      <div class="category-head">
+        <div>
+          <h3>${esc(category.name)}</h3>
+          ${category.note ? `<p class="category-sub">${esc(category.note)}</p>` : ''}
+          ${recommended ? `<p class="category-summary"><strong>Recommended level:</strong> ${esc(recommended)}</p>` : ''}
+          ${programSummary ? `<p class="category-summary"><strong>Program:</strong> ${esc(programSummary)}</p>` : ''}
+          ${partnerReminder ? `<p class="category-summary"><strong>Format:</strong> ${esc(partnerReminder)}</p>` : ''}
+        </div>
+        ${showTime ? `<span class="time-pill">${esc(category.time)}</span>` : ''}
+      </div>
+      ${groups ? `<div class="category-body">${groups}</div>` : ''}
+    </article>
+  `;
+}
+
+function categorySubtab(section, category){
+  if(category.subtab) return category.subtab;
+  if(section.id !== 'ice-dance') return '';
+  if(category.name.includes('Free Dance')) return 'Free Dance';
+  if(category.sub === 'Solo Dance' || category.name.includes('Solo')) return 'Solo Dance';
+  return 'Partnered Pattern Dance';
+}
+
+function renderSubtabs(section){
+  if(!section.subtabs) return '';
+  const active = activeSubtabs[subtabKey(section)] || section.subtabs[0];
+  return `<div class="subtabs" aria-label="${esc(section.label)} format">${section.subtabs.map(tab => `
+    <button type="button" class="subtab-btn ${tab === active ? 'active' : ''}" data-subtab="${esc(tab)}" aria-pressed="${tab === active ? 'true' : 'false'}">${esc(tab)}</button>
+  `).join('')}</div>`;
+}
+
+function renderSubtabIntro(section){
+  if(section.id !== 'ice-dance') return '';
+  const active = activeSubtabs[subtabKey(section)] || section.subtabs[0];
+  if(activeProgram === 'isu'){
+    if(active === 'Couples Pattern Dance'){
+      return '<article class="note-card"><ul class="note-list"><li>Couples provide their own music for all pattern dances.</li><li>Pattern Dances are judged without key points.</li><li>Each Couples Dance team must consist of one man and one woman.</li></ul></article>';
+    }
+    if(active === 'Couples Rhythm Dance' || active === 'Couples Free Dance'){
+      return '<article class="note-card"><p>Each Couples Dance team must consist of one man and one woman.</p></article>';
+    }
+    if(active === 'Solo Ice Dance'){
+      return '<article class="note-card"><p>Solo Ice Dance is included for the North American competition and has separate Pattern Dance, Rhythm Dance, and Free Dance events.</p></article>';
+    }
+  }
+  if(activeProgram === 'us'){
+    if(active === 'Partnered Pattern Dance'){
+      return '<article class="note-card"><p>Partnered dance events are team events. Use the current U.S. pattern dance chart for dance selection, timing, and sequence count.</p></article>';
+    }
+    if(active === 'Partnered Free Dance'){
+      return '<article class="note-card"><p>Partnered free dance events are team events. Use the current Adult Dance WBP chart for technical element requirements.</p></article>';
+    }
+    if(active === 'Solo Dance'){
+      return '<article class="note-card"><p>Solo Dance has separate pattern dance selections and an Adult Solo Dance Handbook. Adult dance tests do not fulfill Solo Dance Series eligibility requirements.</p></article>';
+    }
+  }
+  if(active === 'Free Dance'){
+    return '<article class="note-card"><p>Dance teams must be composed of two skaters.</p></article>';
+  }
+  const patternMusic = '<li>Skaters must submit their own pattern dance music to competition organizers as indicated in the announcement for the competition.</li><li>Adult pattern dance music may be selected from the current ISU Ice Dance music, tunes 1 to 5 only, or a choice of music that meets the tempo specifications for the pattern dance. The chosen music may be vocal.</li><li>Skate Canada Series 8 music will be used during the warm-up period for Adult.</li>';
+  if(active === 'Partnered Pattern Dance'){
+    return `<article class="note-card"><ul class="note-list"><li>Dance teams must be composed of two skaters. Competitors may enter only one partnered pattern dance event. Key points will not be used.</li>${patternMusic}</ul></article>`;
+  }
+  if(active === 'Solo Dance'){
+    return `<article class="note-card"><ul class="note-list">${patternMusic}</ul></article>`;
+  }
+  return '';
+}
+
+function canPlanProgram(section){
+  return section.id === 'free-skating' && ['canada','isu'].includes(activeProgram);
+}
+
+function renderSection(section){
+  if(section.type === 'general') return renderGeneral();
+  const [bg, ink, edge] = colors[section.color];
+  const notes = (section.notes || []).length
+    ? `<article class="note-card"><ul class="note-list">${section.notes.map(note => `<li>${esc(note)}</li>`).join('')}</ul></article>`
+    : '';
+  const visibleCategories = section.subtabs
+    ? section.categories.filter(category => categorySubtab(section, category) === (activeSubtabs[subtabKey(section)] || section.subtabs[0]))
+    : section.categories;
+  return `
+    <section class="section" id="${esc(section.id)}" style="--section-bg:${bg};--section-ink:${ink};--section-edge:${edge}">
+      <div class="section-head">
+        <div class="section-title">
+          <h2>${esc(section.label)}</h2>
+          <p>${esc(section.intro)}</p>
+        </div>
+      </div>
+      ${notes}
+      ${renderSubtabs(section)}
+      ${renderSubtabIntro(section)}
+      ${canPlanProgram(section) ? '<div class="planner-launch"><button type="button" class="planner-button" data-open-planner>Plan your program</button></div>' : ''}
+      <div class="category-list">${visibleCategories.map(renderCategory).join('')}</div>
+    </section>
+  `;
+}
+
+function plannerCategories(program){
+  return Object.keys(plannerRules[program] || {});
+}
+
+function ruleForState(){
+  return plannerRules[plannerState.program]?.[plannerState.category];
+}
+
+function plannerSlotCount(rule){
+  return rule.programElements || (rule.maxJumps + rule.maxSpins + 1);
+}
+
+function emptyPlannerElement(){
+  return {raw:'',value:''};
+}
+
+function defaultPlannerBuilder(rule){
+  return {
+    mode:'jump',
+    jumps:[{type:'T',rotation:'1'}],
+    spinType:'USp',
+    spinLevel:'B',
+    sequenceValue:sequenceCode(rule)
+  };
+}
+
+function initPlannerState(program = activeProgram, category){
+  const categories = plannerCategories(program);
+  const selectedCategory = category && categories.includes(category) ? category : categories[0];
+  const rule = plannerRules[program][selectedCategory];
+  plannerState = {
+    program,
+    category:selectedCategory,
+    elements:[],
+    builderOpen:false,
+    builder:defaultPlannerBuilder(rule)
+  };
+}
+
+function optionList(options, selected){
+  return options.map(option => `<option value="${esc(option[0])}" ${option[0] === selected ? 'selected' : ''}>${esc(option[1])}</option>`).join('');
+}
+
+function levelList(selected){
+  return levelOptions.map(level => `<option value="${esc(level)}" ${String(level) === String(selected) ? 'selected' : ''}>Level ${esc(level)}</option>`).join('');
+}
+
+function sequenceLabel(type){
+  return {ChSq:'Choreographic sequence',StSq:'Step sequence',SpSq:'Spiral sequence'}[type] || 'Sequence';
+}
+
+function sequenceCode(rule){
+  return rule.sequence === 'StSq' ? 'StSqB' : rule.sequence === 'ChSq' ? 'ChSq1' : 'SpSq';
+}
+
+function sequenceOptions(){
+  return ['SpSq','ChSq1','StSqB','StSq1','StSq2','StSq3','StSq4'];
+}
+
+function isSequenceAllowedForRule(code, rule){
+  if(rule.sequence === 'StSq') return /^StSq(B|[1-4])$/.test(code);
+  if(rule.sequence === 'ChSq') return code === 'ChSq1';
+  if(rule.sequence === 'SpSq') return code === 'SpSq';
+  return false;
+}
+
+function sequenceRequirementText(rule){
+  if(rule.sequence === 'StSq') return 'StSqB through StSq4';
+  return sequenceCode(rule);
+}
+
+function shortJumpOptions(){
+  return Object.keys(baseValues.jumps).filter(code => !['3T','3S','3Lo','3F','3Lz'].includes(code));
+}
+
+function plannerOptionGroups(rule){
+  const jumps = shortJumpOptions();
+  const spinLevels = levelOptions;
+  const spinValues = spinOptions.filter(option => option[0]).flatMap(option => spinLevels.map(level => `${option[0]}${level}`));
+  return [
+    ['Empty',['']],
+    ['Jumps',jumps],
+    ['Spins',spinValues],
+    [sequenceLabel(rule.sequence),[sequenceCode(rule)]]
+  ];
+}
+
+function plannerDropdownOptions(rule, selected){
+  const groups = plannerOptionGroups(rule);
+  const knownValues = groups.flatMap(group => group[1]);
+  const allGroups = selected && !knownValues.includes(selected) ? [['Recognized',[selected]], ...groups] : groups;
+  return allGroups.map(group => `
+    <optgroup label="${esc(group[0])}">
+      ${group[1].map(value => `<option value="${esc(value)}" ${value === selected ? 'selected' : ''}>${value ? esc(value) : 'Empty'}</option>`).join('')}
+    </optgroup>
+  `).join('');
+}
+
+function compactPlannerText(value){
+  return String(value || '').toLowerCase().replace(/[–—]/g,'-').replace(/[^a-z0-9+]/g,'');
+}
+
+function canonicalOptionValue(raw, rule){
+  const cleanRaw = compactPlannerText(raw);
+  if(!cleanRaw) return '';
+  return plannerOptionGroups(rule).flatMap(group => group[1]).find(value => compactPlannerText(value) === cleanRaw) || '';
+}
+
+function parseSequenceInput(raw){
+  const clean = compactPlannerText(raw);
+  if(!clean) return '';
+  if(clean.includes('chsq') || clean.includes('choreo') || clean.includes('choreographic')) return 'ChSq1';
+  const stepMatch = clean.match(/stsq(b|[1-4])/) || clean.match(/stepsequence(b|[1-4])/) || clean.match(/stepseq(b|[1-4])/);
+  if(stepMatch) return `StSq${stepMatch[1].toUpperCase()}`;
+  if(clean.includes('stsq') || clean.includes('stepsequence') || clean.includes('stepseq')) return 'StSqB';
+  if(clean.includes('spsq') || clean.includes('spiral') || clean.includes('spsequence') || clean.includes('spseqence') || clean.startsWith('spse')) return 'SpSq';
+  return '';
+}
+
+function parseJumpToken(token){
+  let clean = compactPlannerText(token);
+  if(!clean) return '';
+  let rotation = '1';
+  const wordRotation = clean.match(/^(single|double|triple)(.+)$/);
+  if(wordRotation){
+    rotation = {single:'1',double:'2',triple:'3'}[wordRotation[1]];
+    clean = wordRotation[2];
+  }
+  const numberRotation = clean.match(/^([123])(.+)$/);
+  if(numberRotation){
+    rotation = numberRotation[1];
+    clean = numberRotation[2];
+  }
+  const jumpMap = {
+    w:'W',waltz:'W',waltzjump:'W',
+    t:'T',toe:'T',toeloop:'T',
+    s:'S',sal:'S',salchow:'S',
+    lo:'Lo',loop:'Lo',
+    f:'F',flip:'F',
+    lz:'Lz',z:'Lz',lutz:'Lz',
+    a:'A',axel:'A'
+  };
+  const jump = jumpMap[clean];
+  if(!jump) return '';
+  return jump === 'W' ? '1W' : `${rotation}${jump}`;
+}
+
+function extractJumpTokens(raw){
+  const prepared = String(raw || '')
+    .toLowerCase()
+    .replace(/toe\s*loop/g,'toe')
+    .replace(/waltz\s*jump/g,'waltz')
+    .replace(/jump\s*sequence/g,' sequence ')
+    .replace(/jump\s*combination/g,' combo ')
+    .replace(/\bcombo\b|\bcombination\b|\bsequence\b|\bseq\b/g,' ')
+    .replace(/[,+/\\-]/g,' ');
+  const tokens = prepared.split(/\s+/).filter(Boolean);
+  const jumps = [];
+  for(let index = 0; index < tokens.length; index += 1){
+    if(/^[123]$/.test(tokens[index]) && tokens[index + 1]){
+      const combined = parseJumpToken(`${tokens[index]}${tokens[index + 1]}`);
+      if(combined){
+        jumps.push(combined);
+        index += 1;
+        continue;
+      }
+    }
+    const jump = parseJumpToken(tokens[index]);
+    if(jump) jumps.push(jump);
+  }
+  return jumps;
+}
+
+function parseJumpInput(raw){
+  const jumps = extractJumpTokens(raw);
+  if(!jumps.length) return '';
+  if(jumps.length === 1) return jumps[0];
+  return jumpListCode(jumps.slice(0, 3));
+}
+
+function parseSpinInput(raw){
+  const clean = compactPlannerText(raw);
+  if(!clean) return '';
+  const exact = clean.match(/^(ccosp|cosp|fusp|fssp|fcsp|usp|ssp|csp|lsp)(b|[1-4])?$/);
+  const spinAlias = {
+    usp:'USp',upright:'USp',uprightspin:'USp',
+    ssp:'SSp',sit:'SSp',sitspin:'SSp',
+    csp:'CSp',camel:'CSp',camelspin:'CSp',
+    lsp:'LSp',layback:'LSp',laybackspin:'LSp',
+    cosp:'CoSp',combospin:'CoSp',combinationspin:'CoSp',
+    ccosp:'CCoSp',changefootcombo:'CCoSp',changefootcombinationspin:'CCoSp',changefootspin:'CCoSp',
+    fusp:'FUSp',flyingupright:'FUSp',flyinguprightspin:'FUSp',
+    fssp:'FSSp',flyingsit:'FSSp',flyingsitspin:'FSSp',
+    fcsp:'FCSp',flyingcamel:'FCSp',flyingcamelspin:'FCSp'
+  };
+  if(exact){
+    const code = spinAlias[exact[1]];
+    return `${code}${exact[2] ? exact[2].toUpperCase() : 'B'}`;
+  }
+  const levelMatch = clean.match(/(b|[1-4])$/);
+  const level = levelMatch ? levelMatch[1].toUpperCase() : 'B';
+  const withoutLevel = levelMatch ? clean.slice(0, -1) : clean;
+  const code = spinAlias[withoutLevel];
+  return code ? `${code}${level}` : '';
+}
+
+function recognizeElement(raw, rule){
+  const text = String(raw || '').trim();
+  if(!text) return '';
+  return canonicalOptionValue(text, rule) || parseSequenceInput(text) || parseJumpInput(text) || parseSpinInput(text);
+}
+
+function builderJumpTypes(){
+  return ['W','T','S','Lo','F','Lz','A'];
+}
+
+function builderJumpRotations(type){
+  return type === 'W' ? ['1'] : ['1','2','3'];
+}
+
+function builderJumpCode(jump){
+  if(!jump) return '';
+  return jump.type === 'W' ? '1W' : `${jump.rotation || '1'}${jump.type}`;
+}
+
+function jumpListKind(jumps, program = plannerState.program){
+  if(!jumps || jumps.length <= 1) return 'solo';
+  return isAxelTypeJump(jumps[1], program) ? 'sequence' : 'combo';
+}
+
+function jumpListCode(jumps, program = plannerState.program){
+  const values = (jumps || []).filter(Boolean);
+  if(values.length <= 1) return values[0] || '';
+  return values.join(jumpListKind(values, program) === 'sequence' ? '+SEQ+' : '+');
+}
+
+function builderValue(rule){
+  const builder = plannerState.builder || defaultPlannerBuilder(rule);
+  if(builder.mode === 'spin') return `${builder.spinType}${builder.spinLevel}`;
+  if(builder.mode === 'sequence') return builder.sequenceValue || sequenceCode(rule);
+  const jumps = (builder.jumps || []).map(builderJumpCode).filter(Boolean);
+  if(!jumps.length) return '';
+  return jumpListCode(jumps);
+}
+
+function builderModeLabel(mode){
+  return {jump:'Jump',spin:'Spin',sequence:'Sequence'}[mode] || 'Element';
+}
+
+function normalizeBuilder(rule){
+  plannerState.builder = plannerState.builder || defaultPlannerBuilder(rule);
+  const builder = plannerState.builder;
+  builder.jumps = builder.jumps?.length ? builder.jumps : [{type:'T',rotation:'1'}];
+  builder.jumps = builder.jumps.slice(0, Math.max(1, rule.maxComboJumps || 3));
+  builder.jumps.forEach(jump => {
+    if(!builderJumpTypes().includes(jump.type)) jump.type = 'T';
+    if(!builderJumpRotations(jump.type).includes(jump.rotation)) jump.rotation = '1';
+  });
+  if(!builder.spinType) builder.spinType = 'USp';
+  if(!levelOptions.includes(builder.spinLevel)) builder.spinLevel = 'B';
+  if(!builder.sequenceValue) builder.sequenceValue = sequenceCode(rule);
+}
+
+function addBuilderJump(){
+  const rule = ruleForState();
+  normalizeBuilder(rule);
+  const builder = plannerState.builder;
+  const maxJumps = rule.maxComboJumps || 3;
+  builder.mode = 'jump';
+  if(builder.jumps.length < maxJumps){
+    builder.jumps.push({type:'T',rotation:'1'});
+  }
+}
+
+function removeBuilderJump(index){
+  const rule = ruleForState();
+  normalizeBuilder(rule);
+  if(plannerState.builder.jumps.length <= 1) return;
+  plannerState.builder.jumps.splice(index, 1);
+}
+
+function confirmBuilderElement(){
+  const rule = ruleForState();
+  normalizeBuilder(rule);
+  const value = builderValue(rule);
+  if(!value) return;
+  plannerState.elements.push({raw:value,value});
+  plannerState.builder = defaultPlannerBuilder(rule);
+  plannerState.builderOpen = false;
+}
+
+function renderChoiceButtons(values, selected, attr, index = ''){
+  return values.map(value => `<button type="button" class="builder-choice ${String(value) === String(selected) ? 'active' : ''}" ${attr}="${esc(value)}" ${index !== '' ? `data-builder-index="${esc(index)}"` : ''}>${esc(value)}</button>`).join('');
+}
+
+function renderJumpBuilder(rule){
+  normalizeBuilder(rule);
+  const builder = plannerState.builder;
+  const maxJumps = rule.maxComboJumps || 3;
+  return `
+    <div class="builder-section">
+      ${builder.jumps.map((jump, index) => `
+        <div class="builder-jump-card">
+          <div class="builder-jump-head">
+            <span>Jump ${index + 1}</span>
+            ${index > 0 ? `<button type="button" class="sheet-remove" data-remove-builder-jump="${index}" aria-label="Remove jump ${index + 1}">&times;</button>` : ''}
+          </div>
+          <div class="builder-group">
+            <div class="builder-label">Type</div>
+            <div class="builder-choice-grid">${renderChoiceButtons(builderJumpTypes(), jump.type, 'data-builder-jump-type', index)}</div>
+          </div>
+          <div class="builder-group">
+            <div class="builder-label">Rotation</div>
+            <div class="builder-choice-grid">${renderChoiceButtons(builderJumpRotations(jump.type), jump.rotation, 'data-builder-jump-rotation', index)}</div>
+          </div>
+        </div>
+      `).join('')}
+      <div class="builder-add-row">
+        <button type="button" class="builder-action" data-builder-add-jump ${builder.jumps.length >= maxJumps ? 'disabled' : ''}>+ Add jump</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderSpinBuilder(){
+  const builder = plannerState.builder;
+  const spinTypes = spinOptions.filter(option => option[0]).map(option => option[0]);
+  return `
+    <div class="builder-section">
+      <div class="builder-group">
+        <div class="builder-label">Type</div>
+        <div class="builder-choice-grid">${renderChoiceButtons(spinTypes, builder.spinType, 'data-builder-spin-type')}</div>
+      </div>
+      <div class="builder-group">
+        <div class="builder-label">Level</div>
+        <div class="builder-choice-grid">${renderChoiceButtons(levelOptions, builder.spinLevel, 'data-builder-spin-level')}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderSequenceBuilder(rule){
+  const sequenceValues = sequenceOptions();
+  return `
+    <div class="builder-section">
+      <div class="builder-group">
+        <div class="builder-label">Type</div>
+        <div class="builder-choice-grid">${renderChoiceButtons(sequenceValues, plannerState.builder.sequenceValue || sequenceCode(rule), 'data-builder-sequence-value')}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderElementBuilder(rule){
+  if(!plannerState.builderOpen){
+    return '';
+  }
+  normalizeBuilder(rule);
+  const builder = plannerState.builder;
+  const content = builder.mode === 'spin' ? renderSpinBuilder() : builder.mode === 'sequence' ? renderSequenceBuilder(rule) : renderJumpBuilder(rule);
+  const value = builderValue(rule);
+  return `
+    <div class="planner-panel builder-panel">
+      <div class="builder-tabs">
+        ${['jump','spin','sequence'].map(mode => `<button type="button" class="builder-tab ${builder.mode === mode ? 'active' : ''}" data-builder-mode="${mode}">${esc(builderModeLabel(mode))}s</button>`).join('')}
+      </div>
+      ${content}
+      <div class="builder-preview">
+        <span class="builder-preview-code">${esc(value || 'Empty')}</span>
+        <button type="button" class="builder-action primary builder-confirm-icon" data-confirm-builder aria-label="Add element">+</button>
+      </div>
+    </div>
+  `;
+}
+
+function jumpSuffix(value){
+  const match = String(value || '').match(/^[123](W|T|S|Lo|F|Lz|A)$/);
+  return match ? match[1] : '';
+}
+
+function spinCodeOnly(value){
+  const match = String(value || '').match(/^([A-Z][A-Za-z]*Sp)(B|[1-4])$/);
+  return match ? match[1] : '';
+}
+
+function suggestionMatches(value, raw, recognized){
+  if(!value) return false;
+  const query = compactPlannerText(raw);
+  if(!query) return true;
+  if(compactPlannerText(value).includes(query)) return true;
+  if(value === recognized) return true;
+  const recognizedJump = jumpSuffix(recognized);
+  if(recognizedJump && jumpSuffix(value) === recognizedJump) return true;
+  const recognizedSpin = spinCodeOnly(recognized);
+  if(recognizedSpin && spinCodeOnly(value) === recognizedSpin) return true;
+  return false;
+}
+
+function plannerSuggestionMarkup(rule, raw, selected){
+  const recognized = recognizeElement(raw, rule);
+  const groups = [];
+  plannerOptionGroups(rule).forEach(group => {
+    if(group[0] === 'Empty') return;
+    const values = group[1].filter(value => suggestionMatches(value, raw, recognized));
+    if(values.length) groups.push([group[0], values]);
+  });
+  if(!groups.length) return '';
+  return groups.map(group => `
+    <div class="sheet-suggestion-group">
+      <div class="sheet-suggestion-heading">${esc(group[0])}</div>
+      ${group[1].map(value => `<button type="button" class="sheet-suggestion-option ${value === selected ? 'selected' : ''}" data-suggestion-value="${esc(value)}">${esc(value)}</button>`).join('')}
+    </div>
+  `).join('');
+}
+
+function refreshSuggestions(input){
+  const index = Number(input.dataset.elementInput);
+  const entry = input.closest('.sheet-entry');
+  const menu = entry?.querySelector('[data-element-suggestions]');
+  if(!entry || !menu) return;
+  menu.innerHTML = plannerSuggestionMarkup(ruleForState(), input.value, plannerState.elements[index]?.value || '');
+  entry.classList.toggle('open', Boolean(menu.innerHTML));
+}
+
+function closeSuggestions(){
+  document.querySelectorAll('.sheet-entry.open').forEach(entry => entry.classList.remove('open'));
+}
+
+function elementFromValue(value){
+  if(!value) return emptyPlannerElement();
+  if(value === 'ChSq1' || value === 'SpSq' || /^StSq(B|[1-4])$/.test(value)) return {value,type:'sequence'};
+  const spinMatch = value.match(/^([A-Z][A-Za-z]*Sp)(B|[1-4])$/);
+  if(spinMatch) return {value,type:'spin',spinCode:spinMatch[1],spinLevel:spinMatch[2]};
+  if(value.includes('+SEQ+')){
+    const jumps = value.split('+SEQ+');
+    return {value,type:'jump',kind:'sequence',j1:jumps[0] || '',j2:jumps[1] || '',j3:jumps[2] || ''};
+  }
+  if(value.includes('+')){
+    const jumps = value.split('+');
+    return {value,type:'jump',kind:'combo',j1:jumps[0] || '',j2:jumps[1] || '',j3:jumps[2] || ''};
+  }
+  return {value,type:'jump',kind:'solo',j1:value,j2:'',j3:''};
+}
+
+function spinBaseValue(code, level, rule){
+  if(!code) return 0;
+  const cap = rule.maxSpinLevel ? String(Math.min(Number(level === 'B' ? 0 : level), rule.maxSpinLevel)) : String(level);
+  const lookupLevel = cap === '0' ? 'B' : cap;
+  return baseValues.spins[code]?.[lookupLevel] || 0;
+}
+
+function jumpBaseValue(code, rule){
+  if(!code) return 0;
+  if((rule.ignoredJumps || []).includes(code)) return 0;
+  return baseValues.jumps[code] || 0;
+}
+
+function jumpElementCode(element){
+  const jumps = [element.j1, element.j2, element.j3].filter(Boolean);
+  if(!jumps.length) return '';
+  if(element.kind === 'solo') return jumps[0];
+  return jumps.join(element.kind === 'sequence' ? '+SEQ+' : '+');
+}
+
+function jumpElementJumps(element){
+  if(element.kind === 'solo') return element.j1 ? [element.j1] : [];
+  return [element.j1, element.j2, element.j3].filter(Boolean);
+}
+
+function isAxelTypeJump(jump, program = plannerState.program){
+  if(!jump) return false;
+  if(jump.includes('A')) return true;
+  return program === 'canada' && jump === '1W';
+}
+
+function jumpElementBaseValue(element, rule){
+  const jumps = jumpElementJumps(element);
+  const total = jumps.reduce((sum, jump) => sum + jumpBaseValue(jump, rule), 0);
+  return total;
+}
+
+function warning(type, text, id = ''){
+  return {type, text, id};
+}
+
+function validatePlanner(){
+  const rule = ruleForState();
+  const warnings = [];
+  const rows = [];
+  const elements = plannerState.elements.map(element => elementFromValue(element.value));
+  const plannedElements = elements.filter(element => element.type);
+  const selectedJumpElements = plannedElements.filter(element => element.type === 'jump' && jumpElementJumps(element).length);
+  const selectedSpins = plannedElements.filter(element => element.type === 'spin' && element.spinCode);
+  const selectedSequences = plannedElements.filter(element => element.type === 'sequence');
+  let total = 0;
+
+  plannerState.elements.forEach((element, index) => {
+    if(element.raw && !element.value){
+      warnings.push(warning('caution', `Row ${index + 1} could not be recognized. Try an abbreviation like 1S, 1Lo+1T, USp1, ChSq1, StSqB, or SpSq.`));
+    }
+  });
+
+  if(plannedElements.length < plannerSlotCount(rule)){
+    warnings.push(warning('info', `You filled ${plannedElements.length} of ${plannerSlotCount(rule)} planned element rows.`));
+  }
+  if(plannedElements.length > plannerSlotCount(rule)){
+    warnings.push(warning('error', `You added ${plannedElements.length} elements. This category lists ${plannerSlotCount(rule)} planned element rows.`));
+  }
+  if(selectedJumpElements.length > rule.maxJumps){
+    warnings.push(warning('error', `You planned ${selectedJumpElements.length} jump elements. This category allows maximum ${rule.maxJumps}.`));
+  }
+  if(selectedJumpElements.length < rule.maxJumps){
+    warnings.push(warning('info', `You planned ${selectedJumpElements.length} of ${rule.maxJumps} possible jump elements.`));
+  }
+  if(selectedSpins.length > rule.maxSpins){
+    warnings.push(warning('error', `You planned ${selectedSpins.length} spins. This category allows maximum ${rule.maxSpins}.`));
+  }
+  if(selectedSpins.length < rule.maxSpins){
+    warnings.push(warning('info', `You planned ${selectedSpins.length} of ${rule.maxSpins} possible spins.`));
+  }
+  if(!selectedSequences.length){
+    warnings.push(warning('caution', `${sequenceLabel(rule.sequence)} is not selected. Check whether your program is missing a required sequence element.`));
+  }
+  if(selectedSequences.length > 1){
+    warnings.push(warning('error', `You planned ${selectedSequences.length} sequence elements. This planner expects maximum one ${sequenceLabel(rule.sequence)} for the selected category.`));
+  }
+
+  const jumpCounts = {};
+  const seenJumps = {};
+  let comboCount = 0;
+  let threeJumpCombos = 0;
+  let hasAxel = false;
+  let hasRequiredWaltz = false;
+
+  elements.forEach((element, index) => {
+    if(!element.type) return;
+    if(element.type === 'jump'){
+      const jumps = jumpElementJumps(element);
+      if(!jumps.length) return;
+      const code = jumpElementCode(element);
+      let bv = jumpElementBaseValue(element, rule);
+      let info = element.kind === 'sequence' ? 'x' : '';
+      let detail = element.kind === 'sequence' ? 'Jump sequence estimate uses the sum of listed jump base values.' : '';
+      let warningId = '';
+      const flagRow = (type, text) => {
+        warningId = warningId || `planner-warning-row-${index + 1}`;
+        warnings.push(warning(type, text, warningId));
+        if(type === 'error' || type === 'caution') info = '!';
+      };
+      if(rule.repeat === 'must_combo_or_sequence' && element.kind === 'solo' && jumps.some(jump => seenJumps[jump])){
+        bv = 0;
+        detail = 'Repeat rule issue: estimated as no value until moved into a combination or sequence.';
+        flagRow('error', `${code} is repeated as a solo jump. In ${plannerState.category}, a repeated jump must be in a combination or sequence.`);
+      }
+      total += bv;
+      if(element.kind !== 'solo') comboCount += 1;
+      if(jumps.length >= 3) threeJumpCombos += 1;
+      if(element.kind === 'solo' && jumps.length > 1) flagRow('error', `${code} is marked solo but contains more than one jump.`);
+      if(element.kind !== 'solo' && jumps.length < 2) flagRow('caution', `${code || `Element ${index + 1}`} is marked as ${element.kind}, but only one jump is selected.`);
+      if(rule.maxComboJumps && jumps.length > rule.maxComboJumps) flagRow('error', `${code} has ${jumps.length} jumps; this category allows maximum ${rule.maxComboJumps} jumps in a combination or sequence.`);
+      if(rule.jumpSequences === false && element.kind === 'sequence') flagRow('error', `${code} is a jump sequence. Jump sequences are not listed for ${plannerState.category}.`);
+      jumps.forEach(jump => {
+        jumpCounts[jump] = (jumpCounts[jump] || 0) + 1;
+        if(jump.includes('A')) hasAxel = true;
+        if(jump === '1W') hasRequiredWaltz = true;
+        if((rule.disallowedJumps || []).includes(jump)) flagRow('error', `${jump} is not permitted in ${plannerState.category}.`);
+        if(rule.allowedJumps && !rule.allowedJumps.includes(jump) && !(rule.ignoredJumps || []).includes(jump)) flagRow('error', `${jump} is outside the listed jump allowance for ${plannerState.category}.`);
+        if((rule.ignoredJumps || []).includes(jump)) warnings.push(warning('info', `${jump} may be ignored or receive no base value in this category.`));
+        seenJumps[jump] = true;
+      });
+      rows.push({number:index + 1,code,bv,info,detail,warningId});
+    }
+    if(element.type === 'spin'){
+      if(!element.spinCode) return;
+      const level = element.spinLevel || '1';
+      const code = `${element.spinCode}${level}`;
+      const bv = spinBaseValue(element.spinCode, level, rule);
+      const capped = rule.maxSpinLevel && Number(level === 'B' ? 0 : level) > rule.maxSpinLevel;
+      let warningId = capped ? `planner-warning-row-${index + 1}` : '';
+      let info = capped ? '!' : '';
+      let detail = capped ? `Estimated at category cap Level ${rule.maxSpinLevel}.` : '';
+      if(element.spinCode.startsWith('F') && rule.spinsFlying === false){
+        warningId = warningId || `planner-warning-row-${index + 1}`;
+        info = '!';
+        detail = detail || 'Flying spins are not permitted in this category.';
+        warnings.push(warning('error', `${element.spinCode} is a flying spin, and flying spins are not permitted in this category.`, warningId));
+      }
+      total += bv;
+      rows.push({number:index + 1,code,bv,info,detail,warningId});
+      if(capped) warnings.push(warning('caution', `${element.spinCode} Level ${level} is above the category cap. The estimate uses Level ${rule.maxSpinLevel}.`, warningId));
+    }
+    if(element.type === 'sequence'){
+      const expectedCode = sequenceCode(rule);
+      const code = element.value;
+      const bv = baseValues.sequences[code] ?? 0;
+      const allowed = isSequenceAllowedForRule(code, rule);
+      const warningId = !allowed ? `planner-warning-row-${index + 1}` : '';
+      total += bv;
+      rows.push({number:index + 1,code,bv,info:!allowed ? '!' : '',detail:code === 'SpSq' ? 'Spiral sequence base value varies by calling system; shown as 0.00 estimate.' : '',warningId});
+      if(!allowed) warnings.push(warning('error', `${code} is not the listed sequence for ${plannerState.category}. This level lists ${sequenceRequirementText(rule)}.`, warningId));
+    }
+  });
+
+  if(comboCount > rule.maxCombos) warnings.push(warning('error', `You planned ${comboCount} combinations/sequences. This category allows maximum ${rule.maxCombos}.`));
+  if(rule.maxOneThreeJumpCombo && threeJumpCombos > 1) warnings.push(warning('error', `Only one combination or sequence may contain three jumps.`));
+  if(rule.requiredJumps?.includes('1W') && !hasRequiredWaltz) warnings.push(warning('error', `This category requires a Waltz jump.`));
+  if(rule.requiredJumpType === 'axel' && !hasAxel) warnings.push(warning('error', `This category requires an Axel-type jump.`));
+
+  Object.entries(jumpCounts).forEach(([jump, count]) => {
+    if(count > 2) warnings.push(warning('error', `${jump} appears ${count} times. Adult free skate repeat rules normally allow a listed jump no more than twice.`));
+  });
+
+  const spinCodes = {};
+  let hasFlyingSpin = false;
+  let hasChangeFootCombo = false;
+  selectedSpins.forEach((spin, index) => {
+    const level = spin.spinLevel || '1';
+    spinCodes[spin.spinCode] = (spinCodes[spin.spinCode] || 0) + 1;
+    if(spin.spinCode.startsWith('F')) hasFlyingSpin = true;
+    if(spin.spinCode === 'CCoSp') hasChangeFootCombo = true;
+  });
+  Object.entries(spinCodes).forEach(([code, count]) => {
+    if(count > 1) warnings.push(warning('caution', `${code} appears more than once. Spins usually need different codes to both count cleanly.`));
+  });
+  if(rule.spinRequired?.includes('CCoSp') && !hasChangeFootCombo) warnings.push(warning('caution', `This category expects a combination spin with change of foot.`));
+  if(rule.spinRequired?.includes('F') && !hasFlyingSpin) warnings.push(warning('caution', `This category expects a flying spin or spin with flying entrance.`));
+
+  return {rows,total,warnings};
+}
+
+function renderPlanner(){
+  const categories = plannerCategories(plannerState.program);
+  const rule = ruleForState();
+  const result = validatePlanner();
+  const infoCell = row => {
+    if(!row?.info) return '';
+    if(row.warningId){
+      return `<button type="button" class="info-alert" data-warning-target="${esc(row.warningId)}" aria-label="Show issue for row ${row.number}">!</button>`;
+    }
+    return esc(row.info);
+  };
+  document.getElementById('planner-title').textContent = `Plan your program`;
+  document.getElementById('planner-subtitle').textContent = `${programs[plannerState.program].label} - ${plannerState.category}`;
+  document.getElementById('planner-body').innerHTML = `
+    <div class="planner-grid">
+      <div class="planner-panel">
+        <div class="planner-panel-head">
+          <h3>Planned program component</h3>
+          <button type="button" class="builder-action primary" data-open-builder>+ Add element</button>
+        </div>
+        <div class="planner-field">
+          <label for="planner-category">Level</label>
+          <select class="planner-select" id="planner-category" data-planner-category>
+            ${categories.map(category => `<option value="${esc(category)}" ${category === plannerState.category ? 'selected' : ''}>${esc(category)}</option>`).join('')}
+          </select>
+        </div>
+        <table class="sheet-table">
+          <thead><tr><th>#</th><th>Executed Elements</th><th>Info</th><th>BV</th><th class="sheet-action-col"></th></tr></thead>
+          <tbody>
+            ${plannerState.elements.length ? plannerState.elements.map((element, index) => {
+              const row = result.rows.find(item => item.number === index + 1);
+              return `
+                <tr>
+                  <td>${index + 1}</td>
+                  <td>
+                    <strong>${esc(row?.code || element.value)}</strong>
+                    ${row?.detail ? `<div class="planner-note">${esc(row.detail)}</div>` : ''}
+                  </td>
+                  <td>${infoCell(row)}</td>
+                  <td>${row ? row.bv.toFixed(2) : ''}</td>
+                  <td><button type="button" class="sheet-remove" data-remove-planner-element="${index}" aria-label="Remove ${esc(row?.code || element.value)}">&times;</button></td>
+                </tr>
+              `;
+            }).join('') : '<tr><td></td><td colspan="4"><div class="sheet-empty">No elements added yet.</div></td></tr>'}
+          </tbody>
+        </table>
+        <div class="planner-total"><span>Estimated base value</span><span>${result.total.toFixed(2)}</span></div>
+        <p class="planner-total-subtitle">Estimate only. Actual calls, levels, edge/rotation calls, GOE, and program components are not predicted here.</p>
+        ${renderElementBuilder(rule)}
+        <div class="planner-warnings">
+          ${result.warnings.map(item => `<div ${item.id ? `id="${esc(item.id)}"` : ''} class="planner-warning ${esc(item.type)}">${esc(item.text)}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function openPlanner(){
+  if(!['canada','isu'].includes(activeProgram)) return;
+  initPlannerState(activeProgram);
+  renderPlanner();
+  document.getElementById('planner-modal').classList.add('open');
+  document.getElementById('planner-modal').setAttribute('aria-hidden','false');
+}
+
+function closePlanner(){
+  document.getElementById('planner-modal').classList.remove('open');
+  document.getElementById('planner-modal').setAttribute('aria-hidden','true');
+}
+
+function renderTabs(){
+  document.getElementById('tabs').innerHTML = currentTabIds().map(tabId => {
+    const section = currentSections().find(item => item.id === tabId);
+    const tabLabel = section.tabLabel || ({artistic:'Artistic', pairs:'Pairs', synchronized:'Synchro'}[section.id]) || section.label;
+    return `<button type="button" class="tab-btn" data-tab="${esc(tabId)}">${esc(tabLabel)}</button>`;
+  }).join('');
+  document.querySelectorAll('.tab-btn').forEach(button => {
+    const section = currentSections().find(item => item.id === button.dataset.tab);
+    const [bg, ink, edge] = colors[section.color];
+    button.style.setProperty('--section-bg', bg);
+    button.style.setProperty('--section-ink', ink);
+    button.style.setProperty('--section-edge', edge);
+    button.classList.toggle('active', button.dataset.tab === activeTab);
+  });
+}
+
+function renderProgramSwitch(){
+  document.getElementById('program-switch').innerHTML = Object.entries(programs).filter(([, program]) => !program.hidden).map(([key, program]) => {
+    const disabled = program.disabled ? ' disabled aria-disabled="true" title="US source not added yet"' : '';
+    const [bg, ink, edge] = colors[program.color || 'accent'];
+    return `<button type="button" class="program-btn ${key === activeProgram ? 'active' : ''}" data-program="${esc(key)}" style="--section-bg:${bg};--section-ink:${ink};--section-edge:${edge}" aria-pressed="${key === activeProgram ? 'true' : 'false'}"${disabled}>${esc(program.label)}</button>`;
+  }).join('');
+}
+
+function renderSources(){
+  const sources = programSources[activeProgram] || [];
+  document.getElementById('source-note').innerHTML = `
+    <p>${esc(currentProgram().sourceNote)}</p>
+    <div class="source-actions">
+      ${sources.map(source => `<a class="source-link" href="${esc(source.href)}" target="_blank" rel="noopener">${esc(source.label)}</a>`).join('')}
+    </div>
+  `;
+  document.getElementById('footer-disclaimer').textContent = currentProgram().disclaimer || '';
+}
+
+function syncTabOffset(){
+  const top = document.querySelector('.top');
+  document.documentElement.style.setProperty('--top-height', `${top.offsetHeight}px`);
+}
+
+function renderApp(){
+  const section = currentSections().find(item => item.id === activeTab) || currentSections()[0];
+  activeTab = section.id;
+  renderOverview();
+  renderProgramSwitch();
+  renderSources();
+  document.getElementById('app').innerHTML = renderSection(section);
+  renderTabs();
+  syncTabOffset();
+}
+
+document.getElementById('tabs').addEventListener('click', event => {
+  const button = event.target.closest('.tab-btn');
+  if(!button) return;
+  activeTab = button.dataset.tab;
+  updateRoute();
+  renderApp();
+});
+
+document.getElementById('program-switch').addEventListener('click', event => {
+  const button = event.target.closest('.program-btn');
+  if(!button || button.disabled) return;
+  activeProgram = button.dataset.program;
+  if(!currentTabIds().includes(activeTab)){
+    activeTab = currentTabIds()[0] || 'free-skating';
+  }
+  updateRoute();
+  renderApp();
+});
+
+document.getElementById('app').addEventListener('click', event => {
+  const plannerButton = event.target.closest('[data-open-planner]');
+  if(plannerButton){
+    openPlanner();
+    return;
+  }
+  const button = event.target.closest('.subtab-btn');
+  if(!button) return;
+  const section = currentSections().find(item => item.id === activeTab);
+  activeSubtabs[subtabKey(section)] = button.dataset.subtab;
+  renderApp();
+});
+
+document.getElementById('planner-modal').addEventListener('click', event => {
+  if(event.target.closest('[data-close-planner]')) closePlanner();
+});
+
+document.getElementById('planner-body').addEventListener('click', event => {
+  const targetButton = event.target.closest('[data-warning-target]');
+  if(targetButton){
+    const warningEl = document.getElementById(targetButton.dataset.warningTarget);
+    if(!warningEl) return;
+    warningEl.scrollIntoView({behavior:'smooth',block:'center'});
+    warningEl.classList.add('flash');
+    window.setTimeout(() => warningEl.classList.remove('flash'), 1200);
+    return;
+  }
+  const rule = ruleForState();
+  normalizeBuilder(rule);
+  if(event.target.closest('[data-open-builder]')){
+    plannerState.builderOpen = true;
+    renderPlanner();
+    return;
+  }
+  const removeElement = event.target.closest('[data-remove-planner-element]');
+  if(removeElement){
+    plannerState.elements.splice(Number(removeElement.dataset.removePlannerElement), 1);
+    renderPlanner();
+    return;
+  }
+  const modeButton = event.target.closest('[data-builder-mode]');
+  if(modeButton){
+    plannerState.builder.mode = modeButton.dataset.builderMode;
+    renderPlanner();
+    return;
+  }
+  const jumpType = event.target.closest('[data-builder-jump-type]');
+  if(jumpType){
+    const jump = plannerState.builder.jumps[Number(jumpType.dataset.builderIndex)];
+    jump.type = jumpType.dataset.builderJumpType;
+    if(!builderJumpRotations(jump.type).includes(jump.rotation)) jump.rotation = '1';
+    renderPlanner();
+    return;
+  }
+  const jumpRotation = event.target.closest('[data-builder-jump-rotation]');
+  if(jumpRotation){
+    const jump = plannerState.builder.jumps[Number(jumpRotation.dataset.builderIndex)];
+    jump.rotation = jumpRotation.dataset.builderJumpRotation;
+    renderPlanner();
+    return;
+  }
+  const addJump = event.target.closest('[data-builder-add-jump]');
+  if(addJump){
+    addBuilderJump();
+    renderPlanner();
+    return;
+  }
+  const removeJump = event.target.closest('[data-remove-builder-jump]');
+  if(removeJump){
+    removeBuilderJump(Number(removeJump.dataset.removeBuilderJump));
+    renderPlanner();
+    return;
+  }
+  const spinType = event.target.closest('[data-builder-spin-type]');
+  if(spinType){
+    plannerState.builder.spinType = spinType.dataset.builderSpinType;
+    renderPlanner();
+    return;
+  }
+  const spinLevel = event.target.closest('[data-builder-spin-level]');
+  if(spinLevel){
+    plannerState.builder.spinLevel = spinLevel.dataset.builderSpinLevel;
+    renderPlanner();
+    return;
+  }
+  const sequenceValue = event.target.closest('[data-builder-sequence-value]');
+  if(sequenceValue){
+    plannerState.builder.sequenceValue = sequenceValue.dataset.builderSequenceValue;
+    renderPlanner();
+    return;
+  }
+  if(event.target.closest('[data-confirm-builder]')){
+    confirmBuilderElement();
+    renderPlanner();
+  }
+});
+
+document.getElementById('planner-body').addEventListener('change', event => {
+  const target = event.target;
+  if(target.matches('[data-planner-category]')){
+    initPlannerState(plannerState.program, target.value);
+    renderPlanner();
+    return;
+  }
+  if(target.matches('[data-element-input]')){
+    const row = plannerState.elements[Number(target.dataset.elementInput)];
+    const recognized = recognizeElement(target.value, ruleForState());
+    row.value = recognized;
+    row.raw = recognized || target.value;
+    renderPlanner();
+    return;
+  }
+});
+
+window.addEventListener('keydown', event => {
+  if(event.key === 'Escape') closePlanner();
+});
+
+window.addEventListener('resize', syncTabOffset);
+window.addEventListener('hashchange', () => {
+  closePlanner();
+  parseRoute();
+  renderApp();
+});
+parseRoute();
+loadVersionedRuleData().finally(renderApp);
+</script>
+</body>
+</html>

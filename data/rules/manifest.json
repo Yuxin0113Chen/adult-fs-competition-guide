@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "baseValues": "base-values-2025-2026.json",
+  "regions": {
+    "canada": "canada-2026-2027.json",
+    "isu": "isu-2025-2026.json"
+  }
+}
