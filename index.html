@@ -155,7 +155,8 @@ footer p{max-width:760px;}
 .sheet-remove:hover{color:#dc2626;}
 .planner-field{display:grid;gap:6px;margin-bottom:10px;}
 .planner-field label,.element-row label{font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text3);}
-.planner-select, .element-row select{width:100%;font:inherit;font-size:0.86rem;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 42px 8px 9px;min-height:38px;text-overflow:ellipsis;}
+.planner-select, .element-row select{width:100%;font:inherit;font-size:0.86rem;color:var(--text);background-color:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 42px 8px 9px;min-height:38px;text-overflow:ellipsis;}
+.planner-select{-webkit-appearance:none;appearance:none;overflow:hidden;white-space:nowrap;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='m2 2 5 5 5-5' fill='none' stroke='%23454f68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:14px 9px;}
 .element-list{display:grid;gap:10px;}
 .element-row{border:1px solid var(--border2);border-radius:var(--r);padding:10px;background:#fff;display:grid;gap:9px;}
 .element-row-title{font-size:0.86rem;font-weight:700;color:var(--ink);}
@@ -170,6 +171,7 @@ footer p{max-width:760px;}
 .sheet-table th:nth-child(3),.sheet-table td:nth-child(3){width:68px;text-align:center;}
 .sheet-table th:nth-child(4),.sheet-table td:nth-child(4){width:76px;text-align:right;}
 .sheet-table .sheet-action-col,.sheet-table td:nth-child(5){width:30px;text-align:right;}
+.sheet-heading-short{display:none;}
 .sheet-select{width:100%;font:inherit;font-size:0.86rem;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:7px 8px;min-height:36px;}
 .sheet-entry{position:relative;}
 .sheet-input{width:100%;font:inherit;font-size:0.92rem;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 9px;min-height:38px;}
@@ -220,6 +222,23 @@ footer p{max-width:760px;}
   .age-class-grid{grid-template-columns:1fr;}
   .age-grid{grid-template-columns:1fr;}
   .source-note{margin-top:28px;}
+  .planner-modal{width:calc(100vw - 18px);max-height:calc(100dvh - 18px);}
+  .planner-head{padding:14px;}
+  .planner-body{padding:12px;}
+  .planner-panel{padding:12px;}
+  .planner-select{font-size:1rem;padding:9px 40px 9px 10px;background-position:right 12px center;}
+  .sheet-heading-full{display:none;}
+  .sheet-heading-short{display:inline;}
+  .sheet-table{font-size:0.8rem;}
+  .sheet-table th,.sheet-table td{padding:8px 3px;}
+  .sheet-table th{font-size:0.62rem;letter-spacing:0.04em;white-space:nowrap;}
+  .sheet-table th:nth-child(1),.sheet-table td:nth-child(1){width:26px;}
+  .sheet-table th:nth-child(2),.sheet-table td:nth-child(2){width:auto;}
+  .sheet-table th:nth-child(3),.sheet-table td:nth-child(3){width:42px;}
+  .sheet-table th:nth-child(4),.sheet-table td:nth-child(4){width:44px;}
+  .sheet-table .sheet-action-col,.sheet-table td:nth-child(5){width:24px;}
+  .sheet-remove{padding:3px 0;}
+  .info-alert{width:20px;height:20px;font-size:0.72rem;}
   footer.wrap{padding-bottom:120px;}
 }
 @media (prefers-reduced-motion:reduce){
@@ -1654,6 +1673,10 @@ function plannerCategories(program){
   return Object.keys(plannerRules[program] || {});
 }
 
+function plannerCategoryLabel(category){
+  return String(category || '').replace(/ Free Skating$/, '');
+}
+
 function ruleForState(){
   return plannerRules[plannerState.program]?.[plannerState.category];
 }
@@ -1687,6 +1710,14 @@ function initPlannerState(program = activeProgram, category){
     builderOpen:false,
     builder:defaultPlannerBuilder(rule)
   };
+}
+
+function changePlannerCategory(category){
+  const preservedElements = plannerState.elements.map(element => ({...element}));
+  const builderWasOpen = plannerState.builderOpen;
+  initPlannerState(plannerState.program, category);
+  plannerState.elements = preservedElements;
+  plannerState.builderOpen = builderWasOpen;
 }
 
 function optionList(options, selected){
@@ -2303,11 +2334,11 @@ function renderPlanner(){
         <div class="planner-field">
           <label for="planner-category">Level</label>
           <select class="planner-select" id="planner-category" data-planner-category>
-            ${categories.map(category => `<option value="${esc(category)}" ${category === plannerState.category ? 'selected' : ''}>${esc(category)}</option>`).join('')}
+            ${categories.map(category => `<option value="${esc(category)}" ${category === plannerState.category ? 'selected' : ''}>${esc(plannerCategoryLabel(category))}</option>`).join('')}
           </select>
         </div>
         <table class="sheet-table">
-          <thead><tr><th>#</th><th>Executed Elements</th><th>Info</th><th>BV</th><th class="sheet-action-col"></th></tr></thead>
+          <thead><tr><th>#</th><th><span class="sheet-heading-full">Executed Elements</span><span class="sheet-heading-short">Element</span></th><th>Info</th><th>BV</th><th class="sheet-action-col"></th></tr></thead>
           <tbody>
             ${plannerState.elements.length ? plannerState.elements.map((element, index) => {
               const row = result.rows.find(item => item.number === index + 1);
@@ -2520,7 +2551,7 @@ document.getElementById('planner-body').addEventListener('click', event => {
 document.getElementById('planner-body').addEventListener('change', event => {
   const target = event.target;
   if(target.matches('[data-planner-category]')){
-    initPlannerState(plannerState.program, target.value);
+    changePlannerCategory(target.value);
     renderPlanner();
     return;
   }
