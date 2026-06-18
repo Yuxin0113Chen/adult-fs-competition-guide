@@ -76,6 +76,10 @@ function isAxelTypeJump(jump, region){
   return region === 'canada' && jump === '1W';
 }
 
+function isOnePositionSpin(spinCode){
+  return ['USp','SSp','CSp','LSp','FUSp','FSSp','FCSp'].includes(spinCode);
+}
+
 function addWarning(warnings, type, text, row){
   warnings.push({type, text, row});
 }
@@ -92,6 +96,7 @@ function validateProgram({region, category, elements, rules, baseValues}){
   const warnings = [];
   const rows = [];
   const jumpCounts = {};
+  const jumpOccurrences = {};
   const spinCodes = {};
   let total = 0;
   let comboCount = 0;
@@ -100,6 +105,7 @@ function validateProgram({region, category, elements, rules, baseValues}){
   let hasRequiredWaltz = false;
   let hasFlyingSpin = false;
   let hasChangeFootCombo = false;
+  let onePositionSpinCount = 0;
 
   if(planned.length > slotCount(rule)){
     addWarning(warnings, 'error', `You added ${planned.length} elements. This category lists ${slotCount(rule)} planned element rows.`);
@@ -142,6 +148,8 @@ function validateProgram({region, category, elements, rules, baseValues}){
 
       jumps.forEach(jump => {
         jumpCounts[jump] = (jumpCounts[jump] || 0) + 1;
+        jumpOccurrences[jump] = jumpOccurrences[jump] || [];
+        jumpOccurrences[jump].push({rowNumber, kind:element.kind});
         if(isAxelTypeJump(jump, region)) hasAxel = true;
         if(jump === '1W') hasRequiredWaltz = true;
         if((rule.disallowedJumps || []).includes(jump)){
@@ -165,6 +173,7 @@ function validateProgram({region, category, elements, rules, baseValues}){
       spinCodes[element.spinCode] = (spinCodes[element.spinCode] || 0) + 1;
       if(element.spinCode.startsWith('F')) hasFlyingSpin = true;
       if(element.spinCode === 'CCoSp') hasChangeFootCombo = true;
+      if(isOnePositionSpin(element.spinCode)) onePositionSpinCount += 1;
       if(capped){
         addWarning(warnings, 'caution', `${element.spinCode} Level ${level} is above the category cap. The estimate uses Level ${rule.maxSpinLevel}.`, rowNumber);
       }
@@ -197,6 +206,9 @@ function validateProgram({region, category, elements, rules, baseValues}){
   if(rule.requiredJumps?.includes('1W') && !hasRequiredWaltz){
     addWarning(warnings, 'error', 'This category requires a Waltz jump.');
   }
+  (rule.requiredJumps || []).filter(jump => jump !== '1W').forEach(jump => {
+    if(!jumpCounts[jump]) addWarning(warnings, 'error', `This category requires ${jump}.`);
+  });
   if(rule.requiredJumpType === 'axel' && !hasAxel){
     addWarning(warnings, 'error', 'This category requires an Axel-type jump.');
   }
@@ -204,12 +216,27 @@ function validateProgram({region, category, elements, rules, baseValues}){
     if(count > 2){
       addWarning(warnings, 'error', `${jump} appears ${count} times. Adult free skate repeat rules normally allow a listed jump no more than twice.`);
     }
+    if(count === 2 && rule.repeat === 'one_in_combo_or_sequence'){
+      const occurrences = jumpOccurrences[jump] || [];
+      if(occurrences.every(occurrence => occurrence.kind === 'solo')){
+        const repeatedRow = rows.find(row => row.number === occurrences[1]?.rowNumber);
+        if(repeatedRow){
+          total -= repeatedRow.bv;
+          repeatedRow.bv = 0;
+          repeatedRow.info = '!';
+        }
+        addWarning(warnings, 'error', rule.repeatRuleText || `${jump} appears twice.`, repeatedRow?.number);
+      }
+    }
   });
   Object.entries(spinCodes).forEach(([code, count]) => {
     if(count > 1){
-      addWarning(warnings, 'caution', `${code} appears more than once. Spins usually need different codes to both count cleanly.`);
+      addWarning(warnings, rule.spinCodesDifferent ? 'error' : 'caution', `${code} appears more than once. This category requires different spin codes.`);
     }
   });
+  if(rule.requiredOnePositionSpins && onePositionSpinCount < rule.requiredOnePositionSpins){
+    addWarning(warnings, 'caution', `This category requires ${rule.requiredOnePositionSpins} spin${rule.requiredOnePositionSpins === 1 ? '' : 's'} in one position.`);
+  }
   if(rule.spinRequired?.includes('CCoSp') && !hasChangeFootCombo){
     addWarning(warnings, 'caution', 'This category expects a combination spin with change of foot.');
   }

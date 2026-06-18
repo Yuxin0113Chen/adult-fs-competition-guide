@@ -80,6 +80,29 @@ test('repeat rule catches jumps used more than twice', () => {
   assert.ok(hasMessage(result, '1Lz appears 3 times'));
 });
 
+test('Canada repeat rule rejects two solo occurrences and removes the second estimate', () => {
+  const result = validateProgram({
+    region:'canada',
+    category:'Adult Bronze Free Skating',
+    elements:['1Lz', '1Lz', 'ChSq1'],
+    rules,
+    baseValues
+  });
+  assert.ok(hasMessage(result, 'if a jump is repeated it must be in combination'));
+  approx(result.total, 3.60);
+});
+
+test('Canada repeat rule accepts a repeated jump when one occurrence is in a combination', () => {
+  const result = validateProgram({
+    region:'canada',
+    category:'Adult Bronze Free Skating',
+    elements:['1Lz+1T', '1Lz', 'ChSq1'],
+    rules,
+    baseValues
+  });
+  assert.equal(hasMessage(result, 'if a jump is repeated it must be in combination'), false);
+});
+
 test('combo limits catch too many jumps in Intro', () => {
   const result = validateProgram({
     region:'canada',
@@ -89,6 +112,39 @@ test('combo limits catch too many jumps in Intro', () => {
     baseValues
   });
   assert.ok(hasMessage(result, 'allows maximum 2 jumps'));
+});
+
+test('Canada Bronze permits maximum one jump combination in 2026-2027', () => {
+  const result = validateProgram({
+    region:'canada',
+    category:'Adult Bronze Free Skating',
+    elements:['1Lz+1T', '1F+1Lo', 'ChSq1'],
+    rules,
+    baseValues
+  });
+  assert.ok(hasMessage(result, 'allows maximum 1'));
+});
+
+test('Canada Masters requires single Axel specifically', () => {
+  const result = validateProgram({
+    region:'canada',
+    category:'Adult Masters Free Skating',
+    elements:['2A', 'CCoSp1', 'FSSp1', 'USp1', 'StSq1'],
+    rules,
+    baseValues
+  });
+  assert.ok(hasMessage(result, 'requires 1A'));
+});
+
+test('Canada Bronze requires two one-position spins with different codes', () => {
+  const result = validateProgram({
+    region:'canada',
+    category:'Adult Bronze Free Skating',
+    elements:['1Lz', 'USp1', 'USp2', 'ChSq1'],
+    rules,
+    baseValues
+  });
+  assert.ok(hasMessage(result, 'requires different spin codes'));
 });
 
 test('spin level cap estimates ISU Bronze spins at allowed cap', () => {
@@ -101,6 +157,19 @@ test('spin level cap estimates ISU Bronze spins at allowed cap', () => {
   });
   approx(result.rows[0].bv, 1.30);
   assert.ok(hasMessage(result, 'above the category cap'));
+});
+
+test('ISU Silver uses four jump elements and seven planned elements', () => {
+  assert.equal(rules.isu['Silver Free Skating'].maxJumps, 4);
+  assert.equal(rules.isu['Silver Free Skating'].programElements, 7);
+});
+
+test('ISU Gold, Masters, and Masters Elite use five jump elements and nine planned elements', () => {
+  for(const category of ['Gold Free Skating', 'Masters Free Skating', 'Masters Elite Free Skating']){
+    assert.equal(rules.isu[category].maxJumps, 5);
+    assert.equal(rules.isu[category].programElements, 9);
+    assert.equal(rules.isu[category].maxCombos, 2);
+  }
 });
 
 test('flying spin is flagged where not permitted', () => {

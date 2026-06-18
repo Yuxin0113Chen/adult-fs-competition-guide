@@ -252,7 +252,7 @@ footer p{max-width:760px;}
 <body>
 <header class="top">
   <div class="top-inner">
-    <a href="#" class="logo">Adult <span>Skating</span></a>
+    <a href="#" class="logo">Adult FS <span>Competition</span></a>
     <div class="program-switch" id="program-switch" aria-label="Rule book"></div>
   </div>
 </header>
@@ -308,21 +308,22 @@ const canadaSections = [
         time:'Max 1:40',
         sub:'Free skating program to music',
         groups:[
-          ['Program', [['limit','Seven elements. Program time may be shorter.']]],
+          ['Program', [['limit','7 Elements'], ['','A maximum program time of 1:40 minutes. Program time may be shorter.']]],
           ['Jump Elements', [
-            ['limit','Maximum four jump elements.'],
-            ['','Must include a Waltz Jump.'],
-            ['limit','Maximum one jump combination. Two jumps permitted in the jump combination.'],
-            ['no','No sequences permitted.'],
-            ['no','No jumps higher than single loop.'],
-            ['','No jump may be included more than twice.']
+            ['limit','Max 4 jumps'],
+            ['','Must include 1W'],
+            ['no','No jump higher than 1Lo'],
+            ['limit','Max 1 jump Combo. No Sequences permitted'],
+            ['','(2 jumps permitted in jump combo)'],
+            ['','No jump may be included more than twice. Repeated jump must be in combination']
           ]],
           ['Spin Elements', [
-            ['limit','Maximum two spins; maximum Level 4.'],
-            ['','Two spins in one position; spins must have different codes.']
+            ['limit','Max 2 Spins (Max level 4)'],
+            ['','Two spins of one position (must be different codes)'],
+            ['no','Two spins of one position, and no flying entry']
           ]],
           ['Spiral Sequence', [
-            ['','Forward spiral sequence: two forward spirals, one on each foot, unsupported, on either inside or outside edge.']
+            ['','Forward Spiral Sequence (One spiral on each foot, unsupported position)']
           ]]
         ]
       },
@@ -331,22 +332,22 @@ const canadaSections = [
         time:'1:40 +/- 10s',
         sub:'Free skating program to music',
         groups:[
-          ['Program', [['limit','Seven elements.']]],
+          ['Program', [['limit','7 Elements'], ['','A program time of 1:40minutes (+/- 10 sec).']]],
           ['Jump Elements', [
-            ['limit','Maximum four jump elements.'],
-            ['','All jumps must be single jumps.'],
-            ['yes','Waltz jump is permitted.'],
-            ['no','Single Axel, double jumps, and triple jumps are not permitted.'],
-            ['limit','Maximum two jump combinations, with a maximum of two jumps in each combination.'],
-            ['','No jump may be included more than twice.']
+            ['limit','Max 4 jumps'],
+            ['','Single jumps only (1 W permitted, Axel not permitted)'],
+            ['limit','Maximum 1 jump combination'],
+            ['','(2 jumps permitted in jump combo)'],
+            ['','No jump can be included more than twice and if a jump is repeated it must be in combination']
           ]],
           ['Spins', [
-            ['limit','Maximum two spins; maximum Level 4.'],
-            ['','Two spins in one position; change of foot permitted, no flying entry.'],
-            ['','Spins must have different codes.']
+            ['limit','Max 2 Spins (Max level 4)'],
+            ['','Spin in one position (Change of foot permitted, no flying entry)'],
+            ['','Spin in one position (Change of foot permitted, no flying entry)'],
+            ['','All codes must be different for each category']
           ]],
           ['Choreographic Sequence', [
-            ['limit','Maximum one choreographic sequence.']
+            ['limit','Max of 1 Choreographic Sequence']
           ]]
         ]
       },
@@ -355,23 +356,21 @@ const canadaSections = [
         time:'2:00 +/- 10s',
         sub:'Free skating program to music',
         groups:[
-          ['Program', [['limit','Seven elements.']]],
+          ['Program', [['limit','7 Elements'], ['','A program time of 2:00 minutes (+/- 10 sec).']]],
           ['Jump Elements', [
-            ['limit','Maximum four jump elements.'],
-            ['yes','May include a single Axel Jump.'],
-            ['no','Waltz jump, double jumps, and triple jumps are not permitted.'],
-            ['limit','Maximum two jump combinations, or one jump combination and one jump sequence.'],
-            ['','One jump combination or one sequence may contain three jumps.'],
-            ['','No jump may be included more than twice.']
+            ['limit','Max 4 jumps'],
+            ['','1W, Double and triple jumps not permitted (Axel permitted)'],
+            ['limit','Maximum of two jump combinations or one jump combination and one sequence. One jump combination or one sequence may contain three jumps.'],
+            ['','No jump can be included more than twice and if a jump is repeated it must be in combination or sequence']
           ]],
           ['Spins', [
-            ['limit','Maximum two spins; maximum Level 4.'],
-            ['','One spin in one position; change of foot permitted, flying entry permitted.'],
-            ['','One spin of any nature.'],
-            ['','Spins must have different codes.']
+            ['limit','Max 2 spins (Max level 4)'],
+            ['','Spin in one position (Change of foot permitted, flying entry permitted)'],
+            ['','Spin of any nature'],
+            ['','All codes must be different for each category']
           ]],
           ['Choreographic Sequence', [
-            ['limit','Maximum one choreographic sequence.']
+            ['limit','Max of 1 Choreographic Sequence']
           ]]
         ]
       },
@@ -380,24 +379,23 @@ const canadaSections = [
         time:'2:50 +/- 10s',
         sub:'Free skating program to music',
         groups:[
-          ['Program', [['limit','Nine elements.']]],
+          ['Program', [['limit','9 Elements'], ['','A program time of 2:50 minutes (+/- 10 sec.).']]],
           ['Jump Elements', [
-            ['limit','Maximum five jump elements.'],
-            ['yes','May include an axel jump, single jumps, and double jumps no higher than double loop.'],
-            ['no','Waltz jump is not permitted.'],
-            ['limit','Maximum three jump combinations, or two jump combinations and one jump sequence.'],
-            ['','One jump combination or jump sequence may contain up to three jumps.'],
-            ['','No jump may be included more than twice. A repeated jump must be in a jump combination or jump sequence.']
+            ['limit','Max 5 jumps'],
+            ['','No jump higher than 2Lo, 1W not permitted'],
+            ['limit','Max 2 jump combos or 1 jump combo & 1 seq'],
+            ['','(1 jump combo/seq may contain 3 jumps)'],
+            ['','No jump can be included more than twice and if a jump is repeated it must be in combination or sequence']
           ]],
           ['Spins', [
-            ['limit','Maximum three spins; maximum Level 4.'],
-            ['','One must be a combination spin with a change of foot and two basic positions.'],
-            ['','One must be a flying spin.'],
-            ['','One spin of any nature.'],
-            ['','All spins must have different codes.']
+            ['limit','Max 3 Spins (Max level 4)'],
+            ['','CCoSp'],
+            ['','1 Flying Spin'],
+            ['','1 spin of any nature'],
+            ['','All codes must be different for each category']
           ]],
           ['Step Sequence', [
-            ['limit','Maximum one step sequence.']
+            ['limit','Max of 1 Step Sequence (Max level 4)']
           ]]
         ]
       },
@@ -406,25 +404,24 @@ const canadaSections = [
         time:'3:00 +/- 10s',
         sub:'Free skating program to music',
         groups:[
-          ['Program', [['limit','Nine elements.']]],
+          ['Program', [['limit','9 Elements'], ['','A program time of 3:00 minutes (+/- 10 sec.).']]],
           ['Jump Elements', [
-            ['limit','Maximum five jump elements.'],
-            ['yes','All single and double jumps are permitted.'],
-            ['no','Waltz jump and triple jumps are not permitted.'],
-            ['','One must be an axel.'],
-            ['limit','Maximum three jump combinations, or two jump combinations and one jump sequence.'],
-            ['','One jump combination or jump sequence may contain up to three jumps.'],
-            ['','No jump may be included more than twice. A repeated jump must be in a jump combination or jump sequence.']
+            ['limit','Max 5 jumps'],
+            ['','Must include 1A'],
+            ['','(triple jumps not permitted, 1W not permitted)'],
+            ['limit','Max 2 jump Combos or 1 jump combo & 1 seq'],
+            ['','(1 jump combo/seq may contain 3 jumps)'],
+            ['','No jump can be included more than twice and if a jump is repeated it must be in combination or sequence.']
           ]],
           ['Spins', [
-            ['limit','Maximum three spins; maximum Level 4.'],
-            ['','One must be a combination spin with a change of foot and two basic positions.'],
-            ['','One must be a flying spin.'],
-            ['','One spin of any nature.'],
-            ['','All spins must have different codes.']
+            ['limit','Max 3 spins (Max level 4)'],
+            ['','CCoSp'],
+            ['','1 Flying Spin'],
+            ['','1 spin in one position'],
+            ['','All codes must be different for each category']
           ]],
           ['Step Sequence', [
-            ['limit','Maximum one step sequence.']
+            ['limit','Max of 1 Step Sequence (Max level 4)']
           ]]
         ]
       },
@@ -433,24 +430,24 @@ const canadaSections = [
         time:'3:00 +/- 10s',
         sub:'Free skating program to music',
         groups:[
-          ['Program', [['limit','Nine elements.']]],
+          ['Program', [['limit','9 Elements'], ['','A program time of 3:00 minutes (+/- 10 sec.).']]],
           ['Jump Elements', [
-            ['limit','Maximum five jump elements.'],
-            ['yes','All jumps except Waltz jump are permitted.'],
-            ['','One must be an axel.'],
-            ['limit','Maximum three jump combinations, or two jump combinations and one jump sequence.'],
-            ['','One jump combination or jump sequence may contain up to three jumps.'],
-            ['','No jump may be included more than twice. A repeated jump must be in a jump combination or jump sequence.']
+            ['limit','Max 5 jumps'],
+            ['','Must include 1A'],
+            ['','All jumps permitted except 1W'],
+            ['limit','Max 2 jump Combos or 1 jump combo & 1 seq'],
+            ['','(1 jump combo/seq may contain 3 jumps)'],
+            ['','No jump can be included more than twice and if a jump is repeated it must be in combination or sequence']
           ]],
           ['Spins', [
-            ['limit','Maximum three spins; maximum Level 4.'],
-            ['','One must be a combination spin with a change of foot and two basic positions.'],
-            ['','One must be a flying spin.'],
-            ['','One spin of any nature.'],
-            ['','All spins must have different codes.']
+            ['limit','Max 3 spins (Max level 4)'],
+            ['','CCoSp'],
+            ['','1 Flying Spin'],
+            ['','1 spin in one position'],
+            ['','All codes must be different for each category']
           ]],
           ['Step Sequence', [
-            ['limit','Maximum one step sequence.']
+            ['limit','Max of 1 Step Sequence (Max level 4)']
           ]]
         ]
       }
@@ -635,22 +632,30 @@ const isuSections = [
         name:'Bronze Free Skating',
         time:'1:40 +/- 10s',
         groups:[
-          makeGroup('Program', ['Well-balanced free skating program. Only features up to and including Level 1 will be counted.']),
+          makeGroup('Program', [
+            'The program duration is 1 minute and 40 seconds, +/- 10 seconds.',
+            'Each Program Component is valued at a factor of 1.67.',
+            'Only features up to and including Level 1 will be counted. Any additional features will not count for level requirements and will be ignored by the Technical Panel.',
+            'The warm-up duration is six (6) minutes.',
+            'A fall deduction of 0.5 will be applied for each fall.'
+          ]),
           makeGroup('Jump Elements', [
-            'Maximum four jump elements.',
-            'Only single jumps are permitted.',
-            'Axel type jumps, double jumps, and triple jumps are not permitted.',
-            'One jump combination is permitted, with two listed jumps.',
-            'Each listed jump may be performed a maximum of two times.',
-            'Waltz jumps will be ignored.'
+            'A maximum of four (4) jump elements. Only single jumps are permitted, no Axel type jump, no double or triple jumps can be included. Waltz jumps will be ignored.',
+            'A maximum of one (1) jump combination may be included. The jump combination may consist of two (2) listed jumps.',
+            'Each listed jump may be performed a maximum of two (2) times.'
           ]),
           makeGroup('Spins', [
-            'Maximum two spins of different abbreviations.',
-            'Both spins must be spins in one position, with or without a change of foot.',
-            'Flying spins are not permitted.'
+            'A maximum of two (2) spins of a different abbreviation.',
+            'The spins must be spins in one position with or without a change of foot.',
+            'Flying spins are not permitted.',
+            'The spins must have a required minimum number of revolutions: four (4) for a spin with no change of foot, and four (4) for a spin with a change of foot.',
+            'A spin that has no basic position with two (2) revolutions will receive no level and no value; however, a spin with less than three revolutions will be considered a skating movement and not a spin.'
           ]),
           makeGroup('Choreographic Sequence', [
-            'Maximum one choreographic sequence utilizing at least half of the ice surface.'
+            'A maximum of one (1) Choreographic Sequence, utilizing at least ½ (half) of the ice surface.',
+            'A Choreographic Sequence consists of at least two different movements like spirals, arabesques, spread eagles, Ina Bauers, hydroblading, etc.',
+            'The pattern is not restricted, but the sequence must be clearly visible.',
+            'A Choreographic Sequence has a base value and will be evaluated by the judges in GOE only.'
           ])
         ]
       },
@@ -658,21 +663,32 @@ const isuSections = [
         name:'Silver Free Skating',
         time:'2:00 +/- 10s',
         groups:[
-          makeGroup('Program', ['Well-balanced free skating program. Only features up to and including Level 2 will be counted.']),
+          makeGroup('Program', [
+            'The program duration is 2 minutes +/- 10 seconds.',
+            'Each Program Component is valued at a factor of 1.67.',
+            'Only features up to and including Level 2 will be counted. Any additional features will not count for level requirements and will be ignored by the Technical Panel.',
+            'The warm-up duration is six (6) minutes.',
+            'A fall deduction of 0.5 will be applied for each fall.'
+          ]),
           makeGroup('Jump Elements', [
-            'Maximum four jump elements.',
-            'Any single jumps are permitted, including single Axel.',
-            'Double jumps and triple jumps are not permitted.',
-            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
-            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.',
-            'Each listed jump may be performed a maximum of two times.'
+            'A maximum of four (4) jump elements.',
+            'Any single jump is permitted, no double or triple jumps can be included.',
+            'A maximum of two (2) jump combinations, or one (1) jump combination and one (1) jump sequence may be included.',
+            'One (1) jump combination or one (1) jump sequence may consist of three (3) listed jumps. The other jump combination or jump sequence may consist of two (2) listed jumps.',
+            'A jump sequence consists of two (2) or three (3) jumps of any number of revolutions, in which the second and/or the third jump is an Axel-type jump with a direct step from the landing curve of the first/second jump into the take-off curve of the Axel jump.',
+            'Each listed jump may be performed a maximum of two (2) times.'
           ]),
           makeGroup('Spins', [
-            'Maximum two spins of different abbreviations.',
-            'One spin must be a spin in one position, with or without a change of foot.'
+            'A maximum of two (2) spins of a different abbreviation.',
+            'One (1) of which must be a spin in one position with or without a change of foot.',
+            'The spins must have a required minimum number of revolutions: four (4) for a spin with no change of foot, and four (4) for a spin with a change of foot.',
+            'A spin that has no basic position with two (2) revolutions will receive no level and no value; however, a spin with less than three revolutions will be considered a skating movement and not a spin.'
           ]),
           makeGroup('Choreographic Sequence', [
-            'Maximum one choreographic sequence, fully utilizing the ice surface.'
+            'A maximum of one (1) Choreographic Sequence, fully utilizing the ice surface.',
+            'A Choreographic Sequence consists of at least two different movements like spirals, arabesques, spread eagles, Ina Bauers, hydroblading, etc.',
+            'The pattern is not restricted, but the sequence must be clearly visible.',
+            'A Choreographic Sequence has a base value and will be evaluated by the judges in GOE only.'
           ])
         ]
       },
@@ -680,22 +696,30 @@ const isuSections = [
         name:'Gold Free Skating',
         time:'2:50 +/- 10s',
         groups:[
-          makeGroup('Program', ['Well-balanced free skating program. Only features up to and including Level 3 will be counted.']),
+          makeGroup('Program', [
+            'The program duration is 2 minutes and 50 seconds +/- 10 seconds.',
+            'Each Program Component is valued at a factor of 1.67.',
+            'Only features up to and including Level 3 will be counted. Any additional features will not count for level requirements and will be ignored by the Technical Panel.',
+            'The warm-up duration is six (6) minutes.',
+            'A fall deduction of 0.5 will be applied for each fall.'
+          ]),
           makeGroup('Jump Elements', [
-            'Maximum five jump elements.',
-            'Single jumps, including single Axel, and double jumps are permitted.',
-            'Double flip, double Lutz, double Axel, and triple jumps are not permitted.',
-            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
-            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.',
-            'Each listed jump may be performed a maximum of two times.'
+            'A maximum of five (5) jump elements.',
+            'Single jumps, including the single Axel, and double jumps are permitted, except the double Flip, double Lutz, and double Axel.',
+            'No triple jumps are permitted.',
+            'A maximum of two (2) jump combinations, or one (1) jump combination and one (1) jump sequence may be included.',
+            'One (1) jump combination or one (1) jump sequence may consist of three (3) listed jumps. The other jump combination or jump sequence may consist of two (2) listed jumps.',
+            'A jump sequence consists of two (2) or three (3) jumps of any number of revolutions, in which the second and/or the third jump is an Axel-type jump with a direct step from the landing curve of the first/second jump into the take-off curve of the Axel jump.',
+            'Each listed jump may be performed a maximum of two (2) times.'
           ]),
           makeGroup('Spins', [
-            'Maximum three spins of different abbreviations.',
-            'One spin must be a spin combination with change of foot.',
-            'One spin must be a flying spin or a spin with flying entrance.'
+            'A maximum of three (3) spins of a different abbreviation.',
+            'One (1) of which must be a spin combination with a change of foot and one (1) of which must be a flying spin or a spin with a flying entrance.',
+            'The spins must have a required minimum number of revolutions: five (5) for the flying spin with no change of foot after landing, five (5) for the spin with only one position and no change of foot, and four (4) on each foot for the spin combination with a change of foot.',
+            'A spin that has no basic position with two (2) revolutions will receive no level and no value; however, a spin with less than three revolutions will be considered a skating movement and not a spin.'
           ]),
           makeGroup('Step Sequence', [
-            'Maximum one step sequence, fully utilizing the ice surface.'
+            'A maximum of one (1) Step Sequence, fully utilizing the ice surface.'
           ])
         ]
       },
@@ -703,43 +727,57 @@ const isuSections = [
         name:'Masters Free Skating',
         time:'3:00 +/- 10s',
         groups:[
-          makeGroup('Program', ['Well-balanced free skating program. Features up to and including Level 4 will be counted.']),
+          makeGroup('Program', [
+            'The program duration is 3 minutes +/- 10 seconds.',
+            'Each Program Component is valued at a factor of 1.67.',
+            'The warm-up duration is six (6) minutes.',
+            'A fall deduction of 0.5 will be applied for each fall.'
+          ]),
           makeGroup('Jump Elements', [
-            'Maximum five jump elements.',
-            'One jump element must be an Axel type jump.',
-            'Single and double jumps are permitted.',
-            'Triple and quadruple jumps are not permitted.',
-            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
-            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.',
-            'Each listed jump may be performed a maximum of two times.'
+            'A maximum of five (5) jump elements, one of which must be an Axel-type jump.',
+            'Any single or double jump is permitted, no triple or quadruple jumps can be included.',
+            'A maximum of two (2) jump combinations, or one (1) jump combination and one (1) jump sequence may be included.',
+            'One (1) jump combination or one (1) jump sequence may consist of three (3) listed jumps. The other jump combination or jump sequence may consist of two (2) listed jumps.',
+            'A jump sequence consists of two (2) or three (3) jumps of any number of revolutions, in which the second and/or the third jump is an Axel-type jump with a direct step from the landing curve of the first/second jump into the take-off curve of the Axel jump.',
+            'Each listed jump may be performed a maximum of two (2) times.'
           ]),
           makeGroup('Spins', [
-            'Maximum three spins of different abbreviations.',
-            'One spin must be a spin combination with change of foot.',
-            'One spin must be a flying spin or a spin with flying entrance.',
-            'One spin must be a spin with only one position.'
+            'A maximum of three (3) spins of a different abbreviation.',
+            'One (1) of which must be a spin combination with a change of foot, one (1) of which must be a flying spin or a spin with a flying entrance, and one (1) of which must be a spin with only one (1) position.',
+            'The spins must have a required minimum number of revolutions: five (5) for the flying spin with no change of foot after landing, five (5) for the spin with only one position and no change of foot, and four (4) on each foot for the spin combination with a change of foot.',
+            'A spin that has no basic position with two (2) revolutions will receive no level and no value; however, a spin with less than three revolutions will be considered a skating movement and not a spin.'
           ]),
           makeGroup('Step Sequence', [
-            'Maximum one step sequence, fully utilizing the ice surface.'
+            'A maximum of one (1) Step Sequence, fully utilizing the ice surface.'
           ])
         ]
       },
       {
         name:'Masters Elite Free Skating',
         time:'3:00 +/- 10s',
-        note:'Same technical requirements as Masters, except triple jumps are permitted.',
+        note:'The technical requirements are the same as those for the Masters Free Skating category, except that triple jumps are permitted.',
         groups:[
-          makeGroup('Program', ['Intended for skaters who competed previously at junior or senior level, or skaters who wish to include double Axel and/or triple jumps.']),
-          makeGroup('Jump Elements', [
-            'Maximum five jump elements.',
-            'Single, double, and triple jumps are permitted.',
-            'Quadruple jumps are not permitted.',
-            'One jump element must be an Axel type jump.',
-            'Up to two jump combinations, or one jump combination and one jump sequence, are permitted.',
-            'One jump combination or jump sequence may contain up to three listed jumps; the other may have two listed jumps.'
+          makeGroup('Program', [
+            'The Masters Elite category is intended for those skaters who competed previously at the junior or senior level in national or international competition but is not mandatory for such skaters.',
+            'It is also intended for skaters who wish to include a double Axel and/or triple jumps in their free skating program.',
+            'The technical requirements are the same as those for the Masters Free Skating category, except that triple jumps are permitted.'
           ]),
-          makeGroup('Spins and Steps', [
-            'Same spin and step sequence structure as Masters Free Skating.'
+          makeGroup('Jump Elements', [
+            'A maximum of five (5) jump elements, one of which must be an Axel-type jump.',
+            'Triple jumps are permitted.',
+            'A maximum of two (2) jump combinations, or one (1) jump combination and one (1) jump sequence may be included.',
+            'One (1) jump combination or one (1) jump sequence may consist of three (3) listed jumps. The other jump combination or jump sequence may consist of two (2) listed jumps.',
+            'A jump sequence consists of two (2) or three (3) jumps of any number of revolutions, in which the second and/or the third jump is an Axel-type jump with a direct step from the landing curve of the first/second jump into the take-off curve of the Axel jump.',
+            'Each listed jump may be performed a maximum of two (2) times.'
+          ]),
+          makeGroup('Spins', [
+            'A maximum of three (3) spins of a different abbreviation.',
+            'One (1) of which must be a spin combination with a change of foot, one (1) of which must be a flying spin or a spin with a flying entrance, and one (1) of which must be a spin with only one (1) position.',
+            'The spins must have a required minimum number of revolutions: five (5) for the flying spin with no change of foot after landing, five (5) for the spin with only one position and no change of foot, and four (4) on each foot for the spin combination with a change of foot.',
+            'A spin that has no basic position with two (2) revolutions will receive no level and no value; however, a spin with less than three revolutions will be considered a skating movement and not a spin.'
+          ]),
+          makeGroup('Step Sequence', [
+            'A maximum of one (1) Step Sequence, fully utilizing the ice surface.'
           ])
         ]
       }
@@ -1269,7 +1307,7 @@ const programs = {
         ]
       }
     },
-    sourceNote:'Independent study aid. Canada free skate content QA checked against the 2026-2027 Adult Free Skate Program Requirements Quick Reference Guide (March 2026). Always confirm against the current Skate Canada materials and the competition announcement.',
+    sourceNote:'Independent study aid. Canada free skate content QA checked against the 2026-2027 Adult Free Skate Program Requirements Quick Reference Guide (March 2026) and the full Skate Canada Adult Competition Program Requirements page. Always confirm against the current Skate Canada materials and the competition announcement.',
     disclaimer:'Category names and program requirements belong to Skate Canada. This page is not affiliated with or endorsed by Skate Canada.'
   },
   isu:{
@@ -1383,19 +1421,19 @@ const levelOptions = ['B','1','2','3','4'];
 
 let plannerRules = {
   canada:{
-    'Adult Intro Open Free Skating':{maxJumps:4,maxSpins:2,sequence:'SpSq',programElements:7,allowedJumps:['1W','1T','1S','1Lo'],requiredJumps:['1W'],noHigherThan:'1Lo',maxCombos:1,maxComboJumps:2,jumpSequences:false,repeat:'max_two',maxSpinLevel:4,spinsFlying:false,spinNotes:['Two spins in one position; spins must have different codes.']},
-    'Adult Bronze Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1W','1T','1S','1Lo','1F','1Lz'],disallowedJumps:['1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxComboJumps:2,jumpSequences:false,repeat:'max_two',maxSpinLevel:4,spinsFlying:false,spinNotes:['Two spins in one position; change of foot permitted, no flying entry.']},
-    'Adult Silver Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A'],disallowedJumps:['1W','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinNotes:['One spin in one position; change of foot permitted, flying entry permitted.','One spin of any nature.']},
-    'Adult Gold Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo'],disallowedJumps:['1W','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One CCoSp.','One flying spin.','One spin of any nature.']},
-    'Adult Masters Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A'],disallowedJumps:['1W','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['Must include 1A.','One CCoSp.','One flying spin.','One spin in one position.']},
-    'Adult Masters Elite Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],disallowedJumps:['1W'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['Must include 1A.','One CCoSp.','One flying spin.','One spin in one position.']}
+    'Adult Intro Open Free Skating':{maxJumps:4,maxSpins:2,sequence:'SpSq',programElements:7,allowedJumps:['1W','1T','1S','1Lo'],requiredJumps:['1W'],noHigherThan:'1Lo',maxCombos:1,maxComboJumps:2,jumpSequences:false,repeat:'one_in_combo_or_sequence',repeatRuleText:'No jump may be included more than twice. Repeated jump must be in combination',maxSpinLevel:4,spinsFlying:false,spinCodesDifferent:true,requiredOnePositionSpins:2,spinNotes:['Two spins in one position; spins must have different codes.']},
+    'Adult Bronze Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1W','1T','1S','1Lo','1F','1Lz'],disallowedJumps:['1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:1,maxComboJumps:2,jumpSequences:false,repeat:'one_in_combo_or_sequence',repeatRuleText:'No jump can be included more than twice and if a jump is repeated it must be in combination',maxSpinLevel:4,spinsFlying:false,spinCodesDifferent:true,requiredOnePositionSpins:2,spinNotes:['Two spins in one position; change of foot permitted, no flying entry.']},
+    'Adult Silver Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A'],disallowedJumps:['1W','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'one_in_combo_or_sequence',repeatRuleText:'No jump can be included more than twice and if a jump is repeated it must be in combination or sequence',maxSpinLevel:4,spinsFlying:true,spinCodesDifferent:true,requiredOnePositionSpins:1,spinNotes:['One spin in one position; change of foot permitted, flying entry permitted.','One spin of any nature.']},
+    'Adult Gold Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo'],disallowedJumps:['1W','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'one_in_combo_or_sequence',repeatRuleText:'No jump can be included more than twice and if a jump is repeated it must be in combination or sequence',maxSpinLevel:4,spinsFlying:true,spinCodesDifferent:true,spinRequired:['CCoSp','F'],spinNotes:['One CCoSp.','One flying spin.','One spin of any nature.']},
+    'Adult Masters Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A'],disallowedJumps:['1W','3T','3S','3Lo','3F','3Lz'],requiredJumps:['1A'],maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'one_in_combo_or_sequence',repeatRuleText:'No jump can be included more than twice and if a jump is repeated it must be in combination or sequence.',maxSpinLevel:4,spinsFlying:true,spinCodesDifferent:true,requiredOnePositionSpins:1,spinRequired:['CCoSp','F'],spinNotes:['Must include 1A.','One CCoSp.','One flying spin.','One spin in one position.']},
+    'Adult Masters Elite Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],disallowedJumps:['1W'],requiredJumps:['1A'],maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'one_in_combo_or_sequence',repeatRuleText:'No jump can be included more than twice and if a jump is repeated it must be in combination or sequence',maxSpinLevel:4,spinsFlying:true,spinCodesDifferent:true,requiredOnePositionSpins:1,spinRequired:['CCoSp','F'],spinNotes:['Must include 1A.','One CCoSp.','One flying spin.','One spin in one position.']}
   },
   isu:{
-    'Bronze Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz'],ignoredJumps:['1W'],disallowedJumps:['1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:1,maxComboJumps:2,repeat:'max_two',maxSpinLevel:1,spinsFlying:false,spinNotes:['Maximum Level 1.','Flying spins are not permitted.']},
-    'Silver Free Skating':{maxJumps:5,maxSpins:2,sequence:'ChSq',programElements:8,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A'],disallowedJumps:['2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:2,spinsFlying:true,spinNotes:['Maximum Level 2.']},
-    'Gold Free Skating':{maxJumps:6,maxSpins:3,sequence:'StSq',programElements:10,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo'],disallowedJumps:['2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:3,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Maximum Level 3.']},
-    'Masters Free Skating':{maxJumps:6,maxSpins:3,sequence:'StSq',programElements:10,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A'],disallowedJumps:['3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Features up to Level 4 may count.']},
-    'Masters Elite Free Skating':{maxJumps:7,maxSpins:3,sequence:'StSq',programElements:11,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:4,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Features up to Level 4 may count.']}
+    'Bronze Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz'],ignoredJumps:['1W'],disallowedJumps:['1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:1,maxComboJumps:2,repeat:'max_two',maxSpinLevel:1,spinsFlying:false,spinCodesDifferent:true,requiredOnePositionSpins:2,spinNotes:['Maximum Level 1.','Flying spins are not permitted.']},
+    'Silver Free Skating':{maxJumps:4,maxSpins:2,sequence:'ChSq',programElements:7,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A'],disallowedJumps:['2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:2,spinsFlying:true,spinCodesDifferent:true,requiredOnePositionSpins:1,spinNotes:['Maximum Level 2.']},
+    'Gold Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo'],disallowedJumps:['2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:3,spinsFlying:true,spinCodesDifferent:true,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Maximum Level 3.']},
+    'Masters Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A'],disallowedJumps:['3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinCodesDifferent:true,requiredOnePositionSpins:1,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Features up to Level 4 may count.']},
+    'Masters Elite Free Skating':{maxJumps:5,maxSpins:3,sequence:'StSq',programElements:9,allowedJumps:['1T','1S','1Lo','1F','1Lz','1A','2T','2S','2Lo','2F','2Lz','2A','3T','3S','3Lo','3F','3Lz'],requiredJumpType:'axel',maxCombos:2,maxComboJumps:3,maxOneThreeJumpCombo:true,repeat:'max_two',maxSpinLevel:4,spinsFlying:true,spinCodesDifferent:true,requiredOnePositionSpins:1,spinRequired:['CCoSp','F'],spinNotes:['One jump element must be an Axel-type jump.','Features up to Level 4 may count.']}
   }
 };
 
@@ -2158,6 +2196,10 @@ function isAxelTypeJump(jump, program = plannerState.program){
   return program === 'canada' && jump === '1W';
 }
 
+function isOnePositionSpin(spinCode){
+  return ['USp','SSp','CSp','LSp','FUSp','FSSp','FCSp'].includes(spinCode);
+}
+
 function jumpElementBaseValue(element, rule){
   const jumps = jumpElementJumps(element);
   const total = jumps.reduce((sum, jump) => sum + jumpBaseValue(jump, rule), 0);
@@ -2211,7 +2253,7 @@ function validatePlanner(){
   }
 
   const jumpCounts = {};
-  const seenJumps = {};
+  const jumpOccurrences = {};
   let comboCount = 0;
   let threeJumpCombos = 0;
   let hasAxel = false;
@@ -2232,11 +2274,6 @@ function validatePlanner(){
         warnings.push(warning(type, text, warningId));
         if(type === 'error' || type === 'caution') info = '!';
       };
-      if(rule.repeat === 'must_combo_or_sequence' && element.kind === 'solo' && jumps.some(jump => seenJumps[jump])){
-        bv = 0;
-        detail = 'Repeat rule issue: estimated as no value until moved into a combination or sequence.';
-        flagRow('error', `${code} is repeated as a solo jump. In ${plannerState.category}, a repeated jump must be in a combination or sequence.`);
-      }
       total += bv;
       if(element.kind !== 'solo') comboCount += 1;
       if(jumps.length >= 3) threeJumpCombos += 1;
@@ -2251,7 +2288,8 @@ function validatePlanner(){
         if((rule.disallowedJumps || []).includes(jump)) flagRow('error', `${jump} is not permitted in ${plannerState.category}.`);
         if(rule.allowedJumps && !rule.allowedJumps.includes(jump) && !(rule.ignoredJumps || []).includes(jump)) flagRow('error', `${jump} is outside the listed jump allowance for ${plannerState.category}.`);
         if((rule.ignoredJumps || []).includes(jump)) warnings.push(warning('info', `${jump} may be ignored or receive no base value in this category.`));
-        seenJumps[jump] = true;
+        jumpOccurrences[jump] = jumpOccurrences[jump] || [];
+        jumpOccurrences[jump].push({rowNumber:index + 1,kind:element.kind});
       });
       rows.push({number:index + 1,code,bv,info,detail,warningId});
     }
@@ -2289,24 +2327,44 @@ function validatePlanner(){
   if(comboCount > rule.maxCombos) warnings.push(warning('error', `You planned ${comboCount} combinations/sequences. This category allows maximum ${rule.maxCombos}.`));
   if(rule.maxOneThreeJumpCombo && threeJumpCombos > 1) warnings.push(warning('error', `Only one combination or sequence may contain three jumps.`));
   if(rule.requiredJumps?.includes('1W') && !hasRequiredWaltz) warnings.push(warning('error', `This category requires a Waltz jump.`));
+  (rule.requiredJumps || []).filter(jump => jump !== '1W').forEach(jump => {
+    if(!jumpCounts[jump]) warnings.push(warning('error', `This category requires ${jump}.`));
+  });
   if(rule.requiredJumpType === 'axel' && !hasAxel) warnings.push(warning('error', `This category requires an Axel-type jump.`));
 
   Object.entries(jumpCounts).forEach(([jump, count]) => {
     if(count > 2) warnings.push(warning('error', `${jump} appears ${count} times. Adult free skate repeat rules normally allow a listed jump no more than twice.`));
+    if(count === 2 && rule.repeat === 'one_in_combo_or_sequence'){
+      const occurrences = jumpOccurrences[jump] || [];
+      if(occurrences.every(occurrence => occurrence.kind === 'solo')){
+        const repeatedRow = rows.find(row => row.number === occurrences[1]?.rowNumber);
+        if(repeatedRow){
+          total -= repeatedRow.bv;
+          repeatedRow.bv = 0;
+          repeatedRow.info = '!';
+          repeatedRow.warningId = repeatedRow.warningId || `planner-warning-row-${repeatedRow.number}`;
+          repeatedRow.detail = rule.repeatRuleText || '';
+        }
+        warnings.push(warning('error', rule.repeatRuleText || `${jump} appears twice.`, repeatedRow?.warningId || ''));
+      }
+    }
   });
 
   const spinCodes = {};
   let hasFlyingSpin = false;
   let hasChangeFootCombo = false;
+  let onePositionSpinCount = 0;
   selectedSpins.forEach((spin, index) => {
     const level = spin.spinLevel || '1';
     spinCodes[spin.spinCode] = (spinCodes[spin.spinCode] || 0) + 1;
     if(spin.spinCode.startsWith('F')) hasFlyingSpin = true;
     if(spin.spinCode === 'CCoSp') hasChangeFootCombo = true;
+    if(isOnePositionSpin(spin.spinCode)) onePositionSpinCount += 1;
   });
   Object.entries(spinCodes).forEach(([code, count]) => {
-    if(count > 1) warnings.push(warning('caution', `${code} appears more than once. Spins usually need different codes to both count cleanly.`));
+    if(count > 1) warnings.push(warning(rule.spinCodesDifferent ? 'error' : 'caution', `${code} appears more than once. This category requires different spin codes.`));
   });
+  if(rule.requiredOnePositionSpins && onePositionSpinCount < rule.requiredOnePositionSpins) warnings.push(warning('caution', `This category requires ${rule.requiredOnePositionSpins} spin${rule.requiredOnePositionSpins === 1 ? '' : 's'} in one position.`));
   if(rule.spinRequired?.includes('CCoSp') && !hasChangeFootCombo) warnings.push(warning('caution', `This category expects a combination spin with change of foot.`));
   if(rule.spinRequired?.includes('F') && !hasFlyingSpin) warnings.push(warning('caution', `This category expects a flying spin or spin with flying entrance.`));
 
