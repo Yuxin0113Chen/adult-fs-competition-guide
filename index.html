@@ -130,7 +130,7 @@ footer p{max-width:760px;}
 .planner-panel-head{display:grid;gap:10px;margin-bottom:10px;}
 .planner-panel-head h3{margin-bottom:0;}
 .builder-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:12px;}
-.builder-tab{font:inherit;font-size:0.82rem;font-weight:700;color:var(--text2);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;cursor:pointer;}
+.builder-tab{min-width:0;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:inherit;font-size:0.82rem;font-weight:700;color:var(--text2);background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;cursor:pointer;}
 .builder-tab.active{color:var(--accent);background:var(--accent-l);border-color:#bcd0ff;}
 .builder-section{display:grid;gap:12px;}
 .builder-group{display:grid;gap:7px;}
@@ -227,6 +227,8 @@ footer p{max-width:760px;}
   .planner-body{padding:12px;}
   .planner-panel{padding:12px;}
   .planner-select{font-size:1rem;padding:9px 40px 9px 10px;background-position:right 12px center;}
+  .builder-tabs{gap:4px;}
+  .builder-tab{font-size:0.76rem;padding:8px 5px;}
   .sheet-heading-full{display:none;}
   .sheet-heading-short{display:inline;}
   .sheet-table{font-size:0.8rem;}
